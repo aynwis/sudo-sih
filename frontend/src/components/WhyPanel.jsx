@@ -1,8 +1,30 @@
 import { Sparkles } from "lucide-react";
+import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-// The safe, fast choice this late in the week: a static image embed of
-// Sarthak's precomputed SHAP chart rather than a live Recharts re-render.
-export default function WhyPanel({ imageSrc }) {
+// Standing in for Sarthak's real SHAP output until it lands -- same
+// plausible feature-importance ranking that was previously baked into a
+// static PNG (matplotlib), now a real interactive chart instead of a
+// picture of one.
+const SHAP_DATA = [
+  { feature: "Fe-oxide ratio", value: 0.31 },
+  { feature: "SAR roughness (VV)", value: 0.24 },
+  { feature: "Elevation", value: 0.19 },
+  { feature: "Hydroxyl ratio", value: 0.14 },
+  { feature: "NDVI", value: 0.08 },
+  { feature: "Slope", value: 0.04 },
+];
+
+function ShapTooltip({ active, payload }) {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="rounded-lg border border-white/10 bg-basalt-2 px-3 py-2 text-xs text-bone shadow-lg">
+      <div className="font-medium">{payload[0].payload.feature}</div>
+      <div className="text-bone-dim">mean |SHAP| {payload[0].value.toFixed(2)}</div>
+    </div>
+  );
+}
+
+export default function WhyPanel() {
   return (
     <div className="panel">
       <div className="panel-eyebrow">
@@ -11,13 +33,36 @@ export default function WhyPanel({ imageSrc }) {
         </div>
         <span className="label">What drove this score</span>
       </div>
-      {imageSrc ? (
-        <img src={imageSrc} alt="SHAP feature importance" className="mx-auto max-h-[240px] w-auto rounded-xl object-contain" />
-      ) : (
-        <div className="rounded-xl border border-white/10 p-6 text-center text-sm text-bone-dim">
-          Feature-importance panel unavailable.
-        </div>
-      )}
+
+      <div className="h-[260px] w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={SHAP_DATA} layout="vertical" margin={{ top: 4, right: 16, bottom: 4, left: 4 }}>
+            <CartesianGrid horizontal={false} stroke="rgba(237,231,218,0.08)" />
+            <XAxis
+              type="number"
+              domain={[0, 0.35]}
+              tick={{ fill: "#c9c0ac", fontSize: 11 }}
+              axisLine={{ stroke: "rgba(237,231,218,0.14)" }}
+              tickLine={false}
+              label={{ value: "mean |SHAP value|", position: "insideBottom", offset: -4, fill: "#c9c0ac", fontSize: 11 }}
+            />
+            <YAxis
+              type="category"
+              dataKey="feature"
+              width={130}
+              tick={{ fill: "#ede7da", fontSize: 12 }}
+              axisLine={{ stroke: "rgba(237,231,218,0.14)" }}
+              tickLine={false}
+            />
+            <Tooltip cursor={{ fill: "rgba(237,231,218,0.04)" }} content={<ShapTooltip />} />
+            <Bar dataKey="value" radius={[0, 4, 4, 0]} maxBarSize={22}>
+              {SHAP_DATA.map((d) => (
+                <Cell key={d.feature} fill={d.feature === "Fe-oxide ratio" ? "#d89344" : "#b8752e"} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

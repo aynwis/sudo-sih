@@ -4,7 +4,6 @@ import RegressionCard from "../components/RegressionCard";
 import StatCard from "../components/StatCard";
 import StatusBadge from "../components/StatusBadge";
 import WhyPanel from "../components/WhyPanel";
-import shapChart from "../assets/shap_feature_importance.png";
 import { useProbabilityImage } from "../hooks/useProbabilityImage";
 import { useRegressionEstimate, useValidationPoints } from "../hooks/useBackend";
 import { forensicsBullets } from "../lib/forensicsBullets";
@@ -86,7 +85,7 @@ export default function Home() {
               </div>
             </div>
 
-            <WhyPanel imageSrc={shapChart} />
+            <WhyPanel />
           </div>
         </div>
       </div>
