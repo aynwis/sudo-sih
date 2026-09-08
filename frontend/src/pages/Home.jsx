@@ -19,18 +19,18 @@ export default function Home() {
   const bullets = forensicsBullets(143, 231, 380, 88);
 
   return (
-    <div id="dashboard" className="intro-root px-6 py-16 sm:px-10" style={{ scrollMarginTop: 70 }}>
-      <div className="mx-auto max-w-[1800px] space-y-6">
+    <div id="dashboard" className="intro-root px-6 py-6 sm:px-10" style={{ scrollMarginTop: 70 }}>
+      <div className="mx-auto max-w-[1800px] space-y-4">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <div className="strata-index !mb-2">07 — the live model</div>
-            <h1 className="font-display text-3xl text-bone">Everything above, running for real.</h1>
-            <p className="mt-1 text-sm text-bone-dim">tile02_Jamunjhola, Maharashtra — updates as the pipeline runs</p>
+            <div className="strata-index !mb-1 !text-xs">07 — the live model</div>
+            <h1 className="font-display text-xl text-bone">Everything above, running for real.</h1>
+            <p className="mt-0.5 text-xs text-bone-dim">tile02_Jamunjhola, Maharashtra — updates as the pipeline runs</p>
           </div>
           <StatusBadge status={regressionEstimate.data?.status} />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_700px] lg:items-start">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_700px] lg:items-start">
           {/* Map -- left, narrower now so the data side has room to sit in fewer rows */}
           <div>
             {probImage.status === "loading" && (
@@ -46,13 +46,13 @@ export default function Home() {
                 probabilityImageUrl={probImage.url}
                 bounds={TILE02_BOUNDS}
                 groundTruthSites={validationPoints.data?.sites ?? []}
-                height={700}
+                height={620}
               />
             )}
           </div>
 
           {/* Data -- right, fewer/wider rows so it all fits without scrolling */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="grid grid-cols-3 gap-4">
               <StatCard icon={Database} tone="teal" label="Ground-truth points" value={143} hint="USGS MRDS, deduplicated" />
               <StatCard
