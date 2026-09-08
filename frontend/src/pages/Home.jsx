@@ -19,22 +19,22 @@ export default function Home() {
   const bullets = forensicsBullets(143, 231, 380, 88);
 
   return (
-    <div id="dashboard" className="intro-root px-6 py-8 sm:px-10 lg:h-screen lg:overflow-hidden" style={{ scrollMarginTop: 70 }}>
-      <div className="mx-auto flex h-full max-w-[1800px] flex-col space-y-4">
+    <div id="dashboard" className="intro-root px-6 py-16 sm:px-10" style={{ scrollMarginTop: 70 }}>
+      <div className="mx-auto max-w-[1800px] space-y-6">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <div className="strata-index !mb-1">07 — the live model</div>
-            <h1 className="font-display text-2xl text-bone">Everything above, running for real.</h1>
+            <div className="strata-index !mb-2">07 — the live model</div>
+            <h1 className="font-display text-3xl text-bone">Everything above, running for real.</h1>
             <p className="mt-1 text-sm text-bone-dim">tile02_Jamunjhola, Maharashtra — updates as the pipeline runs</p>
           </div>
           <StatusBadge status={regressionEstimate.data?.status} />
         </div>
 
-        <div className="grid min-h-0 flex-1 grid-cols-1 gap-6 lg:grid-cols-[1fr_280px]">
-          {/* Map -- left, fills the available height */}
-          <div className="min-h-[500px]">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_560px] lg:items-start">
+          {/* Map -- left, wide, normal fixed-height card */}
+          <div>
             {probImage.status === "loading" && (
-              <p className="panel flex h-full items-center gap-2 text-sm text-bone-dim">
+              <p className="panel flex items-center gap-2 text-sm text-bone-dim">
                 <Loader2 size={14} className="animate-spin" /> Loading probability surface…
               </p>
             )}
@@ -46,12 +46,13 @@ export default function Home() {
                 probabilityImageUrl={probImage.url}
                 bounds={TILE02_BOUNDS}
                 groundTruthSites={validationPoints.data?.sites ?? []}
+                height={700}
               />
             )}
           </div>
 
-          {/* Data -- right, stacked vertically, scrolls internally so the map never has to move */}
-          <div className="space-y-4 lg:h-full lg:overflow-y-auto lg:pr-1">
+          {/* Data -- right, two columns where it fits, full-width where it needs the room */}
+          <div className="grid grid-cols-2 gap-4">
             <StatCard icon={Database} tone="teal" label="Ground-truth points" value={143} hint="USGS MRDS, deduplicated" />
             <StatCard
               icon={MapPin}
@@ -60,11 +61,17 @@ export default function Home() {
               value={validationPoints.isLoading ? "…" : validationPoints.isError ? "—" : validationPoints.data.count}
               hint="tile02_Jamunjhola"
             />
-            <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost classifier" />
+            <div className="col-span-2">
+              <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost classifier" />
+            </div>
 
-            {regressionEstimate.data && <RegressionCard data={regressionEstimate.data} />}
+            {regressionEstimate.data && (
+              <div className="col-span-2">
+                <RegressionCard data={regressionEstimate.data} />
+              </div>
+            )}
 
-            <div className="panel">
+            <div className="col-span-2 panel">
               <div className="panel-eyebrow">
                 <div className="chip teal">
                   <Search size={15} strokeWidth={2} />
@@ -81,7 +88,9 @@ export default function Home() {
               </ul>
             </div>
 
-            <WhyPanel imageSrc={shapChart} />
+            <div className="col-span-2">
+              <WhyPanel imageSrc={shapChart} />
+            </div>
           </div>
         </div>
       </div>

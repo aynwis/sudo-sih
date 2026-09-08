@@ -47,7 +47,7 @@ const CIRCLE_COLOR = [
  * `probabilityImageUrl` is a rendered PNG (or data URI) of the probability
  * array. `bounds` is the {left, right, top, bottom} shape from bounds.json.
  */
-export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites }) {
+export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites, height = 520 }) {
   const [selectedSiteId, setSelectedSiteId] = useState(null);
   const geojson = sitesToGeoJson(groundTruthSites);
 
@@ -58,7 +58,7 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
 
   return (
     <>
-      <div className="panel h-full flex flex-col">
+      <div className="panel">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="panel-eyebrow !mb-0">
             <div className="chip ochre">
@@ -76,14 +76,14 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
           </div>
         </div>
 
-        <div className="min-h-0 flex-1 overflow-hidden rounded-xl">
+        <div className="overflow-hidden rounded-xl">
           <Map
             initialViewState={{
               longitude: (bounds.left + bounds.right) / 2,
               latitude: (bounds.top + bounds.bottom) / 2,
-              zoom: 5.5,
+              zoom: 5,
             }}
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "100%", height }}
             mapStyle={SATELLITE_STYLE}
             interactiveLayerIds={["ground-truth-circles"]}
             onClick={handleMapClick}
