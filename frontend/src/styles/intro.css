@@ -80,16 +80,32 @@
 }
 .nav-links {
   display: flex;
-  gap: 34px;
+  gap: 6px;
   font-size: 13.5px;
   color: var(--bone-dim);
 }
 .nav-links a {
   color: inherit;
   text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .nav-links a:hover {
   color: var(--bone);
+  background: rgba(237, 231, 218, 0.08);
+  border-color: var(--line);
+}
+.nav-links a.cta {
+  color: var(--basalt);
+  background: var(--ochre-bright);
+  font-weight: 500;
+}
+.nav-links a.cta:hover {
+  color: var(--basalt);
+  background: var(--bone);
+  border-color: transparent;
 }
 
 .intro-root section {
@@ -216,7 +232,7 @@
 }
 .strata-card {
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 16px;
   padding: 26px 28px;
   backdrop-filter: blur(10px);
   background: rgba(14, 13, 11, 0.72);
@@ -283,7 +299,7 @@
 .map-canvas-wrap {
   position: relative;
   height: 520px;
-  border-radius: 6px;
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--basalt-2);
@@ -302,11 +318,11 @@
   color: #8a8375;
   background: rgba(14, 13, 11, 0.55);
   padding: 4px 10px;
-  border-radius: 2px;
+  border-radius: 16px;
 }
 .map-readout {
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 16px;
   padding: 28px 30px;
   background: rgba(23, 20, 15, 0.78);
   backdrop-filter: blur(10px);
@@ -412,7 +428,7 @@
 }
 .depth-readout {
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 16px;
   padding: 26px 28px;
   background: rgba(23, 20, 15, 0.78);
   backdrop-filter: blur(8px);

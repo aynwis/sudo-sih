@@ -5,10 +5,11 @@ export default function StatusBadge({ status }) {
   const isOk = status === "ok" || status === "ready";
   return (
     <span
-      className={`text-xs px-2 py-1 rounded-full border ${
-        isOk ? "text-teal-300 border-teal-700 bg-teal-950" : "text-amber-300 border-amber-700 bg-amber-950"
+      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${
+        isOk ? "bg-teal-soft text-teal" : "bg-ochre-soft text-ochre"
       }`}
     >
+      <span className={`h-1.5 w-1.5 rounded-full ${isOk ? "bg-teal-bright" : "bg-ochre-bright"}`} />
       {status}
     </span>
   );

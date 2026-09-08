@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Map, { Source, Layer } from "react-map-gl/mapbox";
+import { MapPinned } from "lucide-react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { sitesToGeoJson } from "../lib/groundTruthGeoJson";
 import ReceiptSheetModal from "./ReceiptSheetModal";
@@ -41,35 +42,56 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
 
   return (
     <>
-      <Map
-        mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
-        initialViewState={{
-          longitude: (bounds.left + bounds.right) / 2,
-          latitude: (bounds.top + bounds.bottom) / 2,
-          zoom: 9,
-        }}
-        style={{ width: "100%", height: 480 }}
-        mapStyle="mapbox://styles/mapbox/dark-v11"
-        interactiveLayerIds={["ground-truth-circles"]}
-        onClick={handleMapClick}
-      >
-        <Source id="probability-overlay" type="image" url={probabilityImageUrl} coordinates={boundsToCorners(bounds)}>
-          <Layer id="probability-layer" type="raster" paint={{ "raster-opacity": 0.65 }} />
-        </Source>
+      <div className="rounded-2xl border border-line bg-white p-5 shadow-sm shadow-black/[0.03]">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-ochre-soft text-ochre">
+              <MapPinned size={16} strokeWidth={2} />
+            </div>
+            <div className="text-sm font-medium text-ink">Prospectivity heatmap — tile02_Jamunjhola</div>
+          </div>
+          <div className="flex items-center gap-4 text-xs text-ink-soft">
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-teal-bright" /> mine-level
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-ochre-bright" /> block-level
+            </span>
+          </div>
+        </div>
 
-        <Source id="ground-truth-points" type="geojson" data={geojson}>
-          <Layer
-            id="ground-truth-circles"
-            type="circle"
-            paint={{
-              "circle-radius": 6,
-              "circle-color": CIRCLE_COLOR,
-              "circle-stroke-width": 1,
-              "circle-stroke-color": "#0b0f14",
+        <div className="overflow-hidden rounded-xl">
+          <Map
+            mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+            initialViewState={{
+              longitude: (bounds.left + bounds.right) / 2,
+              latitude: (bounds.top + bounds.bottom) / 2,
+              zoom: 9,
             }}
-          />
-        </Source>
-      </Map>
+            style={{ width: "100%", height: 480 }}
+            mapStyle="mapbox://styles/mapbox/dark-v11"
+            interactiveLayerIds={["ground-truth-circles"]}
+            onClick={handleMapClick}
+          >
+            <Source id="probability-overlay" type="image" url={probabilityImageUrl} coordinates={boundsToCorners(bounds)}>
+              <Layer id="probability-layer" type="raster" paint={{ "raster-opacity": 0.65 }} />
+            </Source>
+
+            <Source id="ground-truth-points" type="geojson" data={geojson}>
+              <Layer
+                id="ground-truth-circles"
+                type="circle"
+                paint={{
+                  "circle-radius": 6,
+                  "circle-color": CIRCLE_COLOR,
+                  "circle-stroke-width": 1,
+                  "circle-stroke-color": "#0b0f14",
+                }}
+              />
+            </Source>
+          </Map>
+        </div>
+      </div>
 
       <ReceiptSheetModal siteId={selectedSiteId} onClose={() => setSelectedSiteId(null)} />
     </>

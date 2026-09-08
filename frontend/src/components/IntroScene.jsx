@@ -29,7 +29,9 @@ export default function IntroScene() {
             <a href="#map">Satellite map</a>
             <a href="#depth">Model</a>
             <a href="#ledger">Verify</a>
-            <a href="#dashboard-handoff">Live dashboard</a>
+            <a href="#dashboard" className="cta">
+              Live dashboard
+            </a>
           </div>
         </nav>
 

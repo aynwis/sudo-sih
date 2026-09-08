@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { X, FileText, Loader2, AlertCircle } from "lucide-react";
 import { MOCK_RECEIPT_SHEET } from "../lib/mockData";
 
 async function fetchReceiptSheet(siteId) {
@@ -28,20 +29,50 @@ export default function ReceiptSheetModal({ siteId, onClose }) {
   if (!siteId) return null; // selectedId doubles as isOpen
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50" onClick={onClose}>
-      <div className="bg-slate-900 border border-slate-700 rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-slate-100">Verify source — {siteId}</h3>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-200">✕</button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 backdrop-blur-sm p-4" onClick={onClose}>
+      <div
+        className="w-full max-w-md rounded-2xl border border-line bg-white p-6 shadow-xl shadow-black/10"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mb-4 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-soft text-teal">
+              <FileText size={16} strokeWidth={2} />
+            </div>
+            <h3 className="font-display text-lg text-ink">Verify source — {siteId}</h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="flex h-8 w-8 items-center justify-center rounded-full text-ink-soft transition hover:bg-paper-2 hover:text-ink"
+          >
+            <X size={16} />
+          </button>
         </div>
 
-        {state.status === "loading" && <p className="text-slate-400 text-sm">Looking up source…</p>}
-        {state.status === "error" && <p className="text-rose-400 text-sm">Couldn't load: {state.error}</p>}
+        {state.status === "loading" && (
+          <p className="flex items-center gap-2 text-sm text-ink-soft">
+            <Loader2 size={14} className="animate-spin" /> Looking up source…
+          </p>
+        )}
+        {state.status === "error" && (
+          <p className="flex items-center gap-2 text-sm text-rose">
+            <AlertCircle size={14} /> Couldn't load: {state.error}
+          </p>
+        )}
         {state.status === "success" && (
-          <div className="space-y-2 text-sm text-slate-200">
-            <div><span className="text-slate-500">File:</span> {state.data.source_file}</div>
-            <div><span className="text-slate-500">Sheet:</span> {state.data.sheet}</div>
-            <div><span className="text-slate-500">Row:</span> {state.data.row}</div>
+          <div className="space-y-2 rounded-xl bg-paper-2 p-4 text-sm text-ink">
+            <div className="flex justify-between gap-4">
+              <span className="text-ink-soft">File</span>
+              <span className="text-right">{state.data.source_file}</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-ink-soft">Sheet</span>
+              <span className="text-right">{state.data.sheet}</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span className="text-ink-soft">Row</span>
+              <span className="text-right">{state.data.row}</span>
+            </div>
           </div>
         )}
       </div>
