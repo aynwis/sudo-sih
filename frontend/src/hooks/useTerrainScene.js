@@ -177,16 +177,16 @@ export function useTerrainScene(canvasRef, veilRef, fadeToSectionId) {
       frameId = requestAnimationFrame(animate);
       const t = clock.getElapsedTime();
 
-      const orbitAngle = scrollProgress * Math.PI * 1.1 + t * 0.02;
+      const orbitAngle = scrollProgress * Math.PI * 1.1 + t * 0.09;
       const radius = 26 - scrollProgress * 8;
       const height = 10 - scrollProgress * 10;
-      camera.position.x = Math.sin(orbitAngle) * radius + mouseX * 2;
+      camera.position.x = Math.sin(orbitAngle) * radius + mouseX * 7;
       camera.position.z = Math.cos(orbitAngle) * radius;
-      camera.position.y = height + mouseY * 1.2;
+      camera.position.y = height + mouseY * 4;
       camera.lookAt(0, -1, 0);
 
       markers.forEach((m, i) => {
-        m.position.y += Math.sin(t * 1.4 + i) * 0.0015;
+        m.position.y += Math.sin(t * 2.4 + i) * 0.004;
       });
 
       if (canvas.style.visibility !== "hidden") renderer.render(scene, camera);
