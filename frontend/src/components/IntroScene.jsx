@@ -13,7 +13,7 @@ export default function IntroScene() {
   const canvasRef = useRef(null);
   const veilRef = useRef(null);
 
-  useTerrainScene(canvasRef, veilRef, "dashboard-handoff");
+  useTerrainScene(canvasRef, veilRef, "ledger");
 
   return (
     <div className="intro-root">
@@ -120,13 +120,13 @@ export default function IntroScene() {
             <p>Every stat on this page traces to one of these. This is the actual receipt-sheet pattern the dashboard uses live, below.</p>
           </div>
           <ReceiptLedgerPreview />
-        </section>
-
-        <section className="intro-handoff" id="dashboard-handoff">
-          <div className="strata-index">05 — see it live</div>
-          <h2>Everything above was the pitch. What's below is the actual tool.</h2>
+          <div className="ledger-handoff">
+            <span className="strata-index">05 — see it live</span>
+            <p>Everything above was the pitch. Scroll on — what's below is the actual tool.</p>
+          </div>
         </section>
       </div>
+      <div className="intro-scrim" />
     </div>
   );
 }

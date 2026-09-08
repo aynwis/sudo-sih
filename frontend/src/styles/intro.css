@@ -56,8 +56,10 @@
   z-index: 2;
 }
 
+/* Scrolls away with the intro instead of staying pinned over the light
+   dashboard below it -- the dashboard has its own header. */
 .intro-nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -540,21 +542,29 @@
   color: var(--ochre-bright);
 }
 
-.intro-handoff {
-  min-height: 40vh;
+.ledger-handoff {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 10px;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
 }
-.intro-handoff .strata-index {
-  margin-bottom: 0;
+.ledger-handoff p {
+  font-size: 14.5px;
+  color: var(--bone-dim);
+  margin: 0;
 }
-.intro-handoff h2 {
-  font-size: clamp(26px, 3.2vw, 38px);
-  max-width: 20ch;
+
+/* Blends the intro's dark basalt into the dashboard's light paper
+   background so the seam reads as one continuous page, not a hard cut. */
+.intro-scrim {
+  height: 140px;
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, #faf8f4 100%);
 }
 
 @media (max-width: 900px) {

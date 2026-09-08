@@ -4,6 +4,7 @@ import { MapPinned } from "lucide-react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { sitesToGeoJson } from "../lib/groundTruthGeoJson";
 import ReceiptSheetModal from "./ReceiptSheetModal";
+import NoTokenMapPreview from "./NoTokenMapPreview";
 
 // Mapbox's image-source `coordinates` expects exactly this
 // top-left/top-right/bottom-right/bottom-left order -- reversing it flips
@@ -34,6 +35,7 @@ const CIRCLE_COLOR = [
 export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites }) {
   const [selectedSiteId, setSelectedSiteId] = useState(null);
   const geojson = sitesToGeoJson(groundTruthSites);
+  const hasMapboxToken = Boolean(import.meta.env.VITE_MAPBOX_TOKEN);
 
   function handleMapClick(event) {
     const feature = event.features && event.features[0];
@@ -61,35 +63,44 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
         </div>
 
         <div className="overflow-hidden rounded-xl">
-          <Map
-            mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
-            initialViewState={{
-              longitude: (bounds.left + bounds.right) / 2,
-              latitude: (bounds.top + bounds.bottom) / 2,
-              zoom: 9,
-            }}
-            style={{ width: "100%", height: 480 }}
-            mapStyle="mapbox://styles/mapbox/dark-v11"
-            interactiveLayerIds={["ground-truth-circles"]}
-            onClick={handleMapClick}
-          >
-            <Source id="probability-overlay" type="image" url={probabilityImageUrl} coordinates={boundsToCorners(bounds)}>
-              <Layer id="probability-layer" type="raster" paint={{ "raster-opacity": 0.65 }} />
-            </Source>
+          {hasMapboxToken ? (
+            <Map
+              mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+              initialViewState={{
+                longitude: (bounds.left + bounds.right) / 2,
+                latitude: (bounds.top + bounds.bottom) / 2,
+                zoom: 9,
+              }}
+              style={{ width: "100%", height: 480 }}
+              mapStyle="mapbox://styles/mapbox/dark-v11"
+              interactiveLayerIds={["ground-truth-circles"]}
+              onClick={handleMapClick}
+            >
+              <Source id="probability-overlay" type="image" url={probabilityImageUrl} coordinates={boundsToCorners(bounds)}>
+                <Layer id="probability-layer" type="raster" paint={{ "raster-opacity": 0.65 }} />
+              </Source>
 
-            <Source id="ground-truth-points" type="geojson" data={geojson}>
-              <Layer
-                id="ground-truth-circles"
-                type="circle"
-                paint={{
-                  "circle-radius": 6,
-                  "circle-color": CIRCLE_COLOR,
-                  "circle-stroke-width": 1,
-                  "circle-stroke-color": "#0b0f14",
-                }}
-              />
-            </Source>
-          </Map>
+              <Source id="ground-truth-points" type="geojson" data={geojson}>
+                <Layer
+                  id="ground-truth-circles"
+                  type="circle"
+                  paint={{
+                    "circle-radius": 6,
+                    "circle-color": CIRCLE_COLOR,
+                    "circle-stroke-width": 1,
+                    "circle-stroke-color": "#0b0f14",
+                  }}
+                />
+              </Source>
+            </Map>
+          ) : (
+            <NoTokenMapPreview
+              probabilityImageUrl={probabilityImageUrl}
+              bounds={bounds}
+              groundTruthSites={groundTruthSites}
+              onSelectSite={setSelectedSiteId}
+            />
+          )}
         </div>
       </div>
 
