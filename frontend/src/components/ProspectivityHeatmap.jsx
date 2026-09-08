@@ -1,12 +1,27 @@
 import { useState } from "react";
-import Map, { Source, Layer } from "react-map-gl/mapbox";
+import Map, { Source, Layer } from "react-map-gl/maplibre";
 import { MapPinned } from "lucide-react";
-import "mapbox-gl/dist/mapbox-gl.css";
+import "maplibre-gl/dist/maplibre-gl.css";
 import { sitesToGeoJson } from "../lib/groundTruthGeoJson";
 import ReceiptSheetModal from "./ReceiptSheetModal";
-import NoTokenMapPreview from "./NoTokenMapPreview";
 
-// Mapbox's image-source `coordinates` expects exactly this
+// Esri's World Imagery raster tiles -- free, no API key/account/card
+// required, unlike Mapbox. Inlined as a raster style since we don't need
+// a vector basemap for a satellite-imagery product anyway.
+const SATELLITE_STYLE = {
+  version: 8,
+  sources: {
+    "esri-satellite": {
+      type: "raster",
+      tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],
+      tileSize: 256,
+      attribution: "Esri, Maxar, Earthstar Geographics",
+    },
+  },
+  layers: [{ id: "esri-satellite", type: "raster", source: "esri-satellite" }],
+};
+
+// The image-source `coordinates` expects exactly this
 // top-left/top-right/bottom-right/bottom-left order -- reversing it flips
 // or skews the overlay silently.
 function boundsToCorners(bounds) {
@@ -35,7 +50,6 @@ const CIRCLE_COLOR = [
 export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites, height = 480 }) {
   const [selectedSiteId, setSelectedSiteId] = useState(null);
   const geojson = sitesToGeoJson(groundTruthSites);
-  const hasMapboxToken = Boolean(import.meta.env.VITE_MAPBOX_TOKEN);
 
   function handleMapClick(event) {
     const feature = event.features && event.features[0];
@@ -63,45 +77,34 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
         </div>
 
         <div className="overflow-hidden rounded-xl">
-          {hasMapboxToken ? (
-            <Map
-              mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
-              initialViewState={{
-                longitude: (bounds.left + bounds.right) / 2,
-                latitude: (bounds.top + bounds.bottom) / 2,
-                zoom: 9,
-              }}
-              style={{ width: "100%", height }}
-              mapStyle="mapbox://styles/mapbox/dark-v11"
-              interactiveLayerIds={["ground-truth-circles"]}
-              onClick={handleMapClick}
-            >
-              <Source id="probability-overlay" type="image" url={probabilityImageUrl} coordinates={boundsToCorners(bounds)}>
-                <Layer id="probability-layer" type="raster" paint={{ "raster-opacity": 0.65 }} />
-              </Source>
+          <Map
+            initialViewState={{
+              longitude: (bounds.left + bounds.right) / 2,
+              latitude: (bounds.top + bounds.bottom) / 2,
+              zoom: 9,
+            }}
+            style={{ width: "100%", height }}
+            mapStyle={SATELLITE_STYLE}
+            interactiveLayerIds={["ground-truth-circles"]}
+            onClick={handleMapClick}
+          >
+            <Source id="probability-overlay" type="image" url={probabilityImageUrl} coordinates={boundsToCorners(bounds)}>
+              <Layer id="probability-layer" type="raster" paint={{ "raster-opacity": 0.65 }} />
+            </Source>
 
-              <Source id="ground-truth-points" type="geojson" data={geojson}>
-                <Layer
-                  id="ground-truth-circles"
-                  type="circle"
-                  paint={{
-                    "circle-radius": 6,
-                    "circle-color": CIRCLE_COLOR,
-                    "circle-stroke-width": 1,
-                    "circle-stroke-color": "#0b0f14",
-                  }}
-                />
-              </Source>
-            </Map>
-          ) : (
-            <NoTokenMapPreview
-              probabilityImageUrl={probabilityImageUrl}
-              bounds={bounds}
-              groundTruthSites={groundTruthSites}
-              onSelectSite={setSelectedSiteId}
-              height={height}
-            />
-          )}
+            <Source id="ground-truth-points" type="geojson" data={geojson}>
+              <Layer
+                id="ground-truth-circles"
+                type="circle"
+                paint={{
+                  "circle-radius": 6,
+                  "circle-color": CIRCLE_COLOR,
+                  "circle-stroke-width": 1,
+                  "circle-stroke-color": "#0b0f14",
+                }}
+              />
+            </Source>
+          </Map>
         </div>
       </div>
 
