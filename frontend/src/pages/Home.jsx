@@ -2,6 +2,8 @@ import ProspectivityHeatmap from "../components/ProspectivityHeatmap";
 import RegressionCard from "../components/RegressionCard";
 import StatCard from "../components/StatCard";
 import StatusBadge from "../components/StatusBadge";
+import WhyPanel from "../components/WhyPanel";
+import shapChart from "../assets/shap_feature_importance.png";
 import { useProbabilityImage } from "../hooks/useProbabilityImage";
 import { useRegressionEstimate, useValidationPoints } from "../hooks/useBackend";
 import { forensicsBullets } from "../lib/forensicsBullets";
@@ -51,6 +53,10 @@ export default function Home() {
             ))}
           </ul>
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <WhyPanel imageSrc={shapChart} />
       </div>
     </div>
   );
