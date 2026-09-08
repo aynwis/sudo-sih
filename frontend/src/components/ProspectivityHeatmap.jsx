@@ -3,7 +3,9 @@ import Map, { Source, Layer } from "react-map-gl/maplibre";
 import { MapPinned } from "lucide-react";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { sitesToGeoJson } from "../lib/groundTruthGeoJson";
+import { REGRESSION_SITES } from "../lib/regressionSites";
 import ReceiptSheetModal from "./ReceiptSheetModal";
+import RegressionSitePopup from "./RegressionSitePopup";
 
 // Esri's World Imagery raster tiles -- free, no API key/account/card
 // required, unlike Mapbox. Inlined as a raster style since we don't need
@@ -43,17 +45,35 @@ const CIRCLE_COLOR = [
   "#888888",
 ];
 
+function regressionSitesToGeoJson(sites) {
+  return {
+    type: "FeatureCollection",
+    features: sites.map((s) => ({
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [s.lon, s.lat] },
+      properties: { site_id: s.site_id },
+    })),
+  };
+}
+
 /**
  * `probabilityImageUrl` is a rendered PNG (or data URI) of the probability
  * array. `bounds` is the {left, right, top, bottom} shape from bounds.json.
  */
 export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites, height = 520 }) {
   const [selectedSiteId, setSelectedSiteId] = useState(null);
+  const [selectedRegressionSiteId, setSelectedRegressionSiteId] = useState(null);
   const geojson = sitesToGeoJson(groundTruthSites);
+  const regressionGeojson = regressionSitesToGeoJson(REGRESSION_SITES);
 
   function handleMapClick(event) {
     const feature = event.features && event.features[0];
-    if (feature) setSelectedSiteId(feature.properties.site_id);
+    if (!feature) return;
+    if (feature.layer.id === "regression-site-circles") {
+      setSelectedRegressionSiteId(feature.properties.site_id);
+    } else {
+      setSelectedSiteId(feature.properties.site_id);
+    }
   }
 
   return (
@@ -73,6 +93,9 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
             <span className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-ochre-bright" /> block-level
             </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-purple-400" /> predicted reserve
+            </span>
           </div>
         </div>
 
@@ -85,7 +108,7 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
             }}
             style={{ width: "100%", height }}
             mapStyle={SATELLITE_STYLE}
-            interactiveLayerIds={["ground-truth-circles"]}
+            interactiveLayerIds={["ground-truth-circles", "regression-site-circles"]}
             onClick={handleMapClick}
           >
             <Source id="probability-overlay" type="image" url={probabilityImageUrl} coordinates={boundsToCorners(bounds)}>
@@ -104,11 +127,27 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
                 }}
               />
             </Source>
+
+            {/* Sahil's regression-ready sites -- empty until real
+                coordinates + predictions come in, see regressionSites.js */}
+            <Source id="regression-site-points" type="geojson" data={regressionGeojson}>
+              <Layer
+                id="regression-site-circles"
+                type="circle"
+                paint={{
+                  "circle-radius": 7,
+                  "circle-color": "#c084fc",
+                  "circle-stroke-width": 1.5,
+                  "circle-stroke-color": "#0b0f14",
+                }}
+              />
+            </Source>
           </Map>
         </div>
       </div>
 
       <ReceiptSheetModal siteId={selectedSiteId} onClose={() => setSelectedSiteId(null)} />
+      <RegressionSitePopup siteId={selectedRegressionSiteId} onClose={() => setSelectedRegressionSiteId(null)} />
     </>
   );
 }
