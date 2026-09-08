@@ -6,9 +6,10 @@ import ReceiptLedgerPreview from "./ReceiptLedgerPreview";
 import "../styles/intro.css";
 
 // The scroll narrative that leads into the real dashboard. The terrain
-// canvas is pinned as a fixed background and fades out once the reader
-// scrolls to `#dashboard-handoff`, so it reads as the overlay lifting away
-// rather than a page swap.
+// canvas is pinned as a fixed background and fades out as the reader
+// approaches the ledger section, so it reads as the overlay lifting away
+// rather than a page swap. The nav itself lives at the app level (SiteNav)
+// since it needs to stay visible over the dashboard too.
 export default function IntroScene() {
   const canvasRef = useRef(null);
   const veilRef = useRef(null);
@@ -21,20 +22,7 @@ export default function IntroScene() {
       <div className="scene-veil" ref={veilRef}></div>
 
       <div className="intro-content">
-        <nav className="intro-nav" id="top">
-          <div className="nav-mark">
-            MnSight <em>/ PS26009</em>
-          </div>
-          <div className="nav-links">
-            <a href="#map">Satellite map</a>
-            <a href="#depth">Model</a>
-            <a href="#ledger">Verify</a>
-            <a href="#dashboard" className="cta">
-              Live dashboard
-            </a>
-          </div>
-        </nav>
-
+        <div id="top" />
         <section className="hero">
           <div className="hero-eyebrow">Manganese prospectivity mapping — Maharashtra, tile02_Jamunjhola</div>
           <h1>
@@ -126,7 +114,6 @@ export default function IntroScene() {
           </div>
         </section>
       </div>
-      <div className="intro-scrim" />
     </div>
   );
 }

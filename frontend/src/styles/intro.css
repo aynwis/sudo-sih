@@ -56,48 +56,66 @@
   z-index: 2;
 }
 
-/* Scrolls away with the intro instead of staying pinned over the light
-   dashboard below it -- the dashboard has its own header. */
-.intro-nav {
-  position: absolute;
+/* Always visible -- lives at the app level, not scoped to the intro, so it
+   stays consistent whether the section behind it is the intro or the
+   dashboard (both dark now). */
+.site-nav {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 20;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 5vw;
-  background: linear-gradient(180deg, rgba(14, 13, 11, 0.88) 0%, rgba(14, 13, 11, 0.55) 70%, transparent 100%);
-  backdrop-filter: blur(6px);
+  padding: 18px 5vw;
+  background: rgba(14, 13, 11, 0.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  font-family: "Space Grotesk", sans-serif;
 }
 .nav-mark {
   font-family: "Fraunces", serif;
   font-size: 19px;
   letter-spacing: 0.01em;
+  color: var(--bone);
+  text-decoration: none;
 }
 .nav-mark em {
   font-style: italic;
   color: var(--ochre-bright);
 }
 .nav-links {
+  position: relative;
   display: flex;
   gap: 6px;
   font-size: 13.5px;
   color: var(--bone-dim);
 }
+.nav-pill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 999px;
+  background: rgba(216, 147, 68, 0.16);
+  border: 1px solid rgba(216, 147, 68, 0.35);
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), width 0.35s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease;
+  pointer-events: none;
+}
 .nav-links a {
+  position: relative;
   color: inherit;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 999px;
-  border: 1px solid transparent;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition: color 0.2s ease;
 }
 .nav-links a:hover {
   color: var(--bone);
-  background: rgba(237, 231, 218, 0.08);
-  border-color: var(--line);
+}
+.nav-links a.active {
+  color: var(--ochre-bright);
 }
 .nav-links a.cta {
   color: var(--basalt);
@@ -107,7 +125,9 @@
 .nav-links a.cta:hover {
   color: var(--basalt);
   background: var(--bone);
-  border-color: transparent;
+}
+.nav-links a.cta.active {
+  color: var(--basalt);
 }
 
 .intro-root section {
@@ -115,6 +135,7 @@
   min-height: 100vh;
   padding: 0 5vw;
   box-sizing: border-box;
+  scroll-margin-top: 70px;
 }
 
 /* ---------- hero ---------- */
@@ -557,14 +578,106 @@
   margin: 0;
 }
 
-/* Blends the intro's dark basalt into the dashboard's light paper
-   background so the seam reads as one continuous page, not a hard cut. */
-.intro-scrim {
-  height: 140px;
-  position: relative;
-  z-index: 3;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent 0%, #faf8f4 100%);
+/* ---------- shared panel system (dashboard uses the same cards as the
+   intro's strata-card, instead of a bolted-on second design language) ---------- */
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 24px;
+  backdrop-filter: blur(10px);
+  background: rgba(14, 13, 11, 0.6);
+  color: var(--bone);
+}
+.panel-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.panel-eyebrow .chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.chip.ochre {
+  background: rgba(216, 147, 68, 0.12);
+  border-color: rgba(216, 147, 68, 0.35);
+  color: var(--ochre-bright);
+}
+.chip.teal {
+  background: rgba(91, 158, 147, 0.12);
+  border-color: rgba(91, 158, 147, 0.35);
+  color: var(--teal-bright);
+}
+.panel-eyebrow .label {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 14.5px;
+  color: var(--bone-dim);
+}
+.panel .stat-value {
+  font-family: "Fraunces", serif;
+  font-size: 34px;
+  color: var(--bone);
+  line-height: 1;
+}
+.panel .stat-hint {
+  font-size: 12.5px;
+  color: var(--bone-dim);
+  margin-top: 6px;
+}
+.panel.hero-panel {
+  background: linear-gradient(140deg, var(--ochre-bright) 0%, var(--ochre) 100%);
+  border-color: transparent;
+  color: var(--basalt);
+}
+.panel.hero-panel .panel-eyebrow .label,
+.panel.hero-panel .stat-hint {
+  color: rgba(14, 13, 11, 0.65);
+}
+.panel.hero-panel .stat-value {
+  color: var(--basalt);
+}
+.panel.hero-panel .chip {
+  background: rgba(14, 13, 11, 0.12);
+  border-color: rgba(14, 13, 11, 0.25);
+  color: var(--basalt);
+}
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  border: 1px solid;
+}
+.pill-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.pill-badge.ok {
+  background: rgba(91, 158, 147, 0.12);
+  border-color: rgba(91, 158, 147, 0.35);
+  color: var(--teal-bright);
+}
+.pill-badge.ok .dot {
+  background: var(--teal-bright);
+}
+.pill-badge.pending {
+  background: rgba(216, 147, 68, 0.12);
+  border-color: rgba(216, 147, 68, 0.35);
+  color: var(--ochre-bright);
+}
+.pill-badge.pending .dot {
+  background: var(--ochre-bright);
 }
 
 @media (max-width: 900px) {

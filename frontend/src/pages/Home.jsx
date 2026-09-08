@@ -9,6 +9,7 @@ import { useProbabilityImage } from "../hooks/useProbabilityImage";
 import { useRegressionEstimate, useValidationPoints } from "../hooks/useBackend";
 import { forensicsBullets } from "../lib/forensicsBullets";
 import { TILE02_BOUNDS } from "../lib/mockData";
+import "../styles/intro.css";
 
 export default function Home() {
   const probImage = useProbabilityImage("/api/raster/probability.png");
@@ -18,12 +19,13 @@ export default function Home() {
   const bullets = forensicsBullets(143, 231, 380, 88);
 
   return (
-    <div id="dashboard" className="min-h-screen bg-paper px-6 py-10 sm:px-10">
+    <div id="dashboard" className="intro-root px-6 py-16 sm:px-10" style={{ scrollMarginTop: 70 }}>
       <div className="mx-auto max-w-6xl space-y-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 className="font-display text-3xl text-ink">MnSight Dashboard</h1>
-            <p className="mt-1 text-sm text-ink-soft">Live prospectivity model — tile02_Jamunjhola, Maharashtra</p>
+            <div className="strata-index !mb-2">06 — the live model</div>
+            <h1 className="font-display text-3xl text-bone">Everything above, running for real.</h1>
+            <p className="mt-1 text-sm text-bone-dim">tile02_Jamunjhola, Maharashtra — updates as the pipeline runs</p>
           </div>
           <StatusBadge status={regressionEstimate.data?.status} />
         </div>
@@ -41,12 +43,12 @@ export default function Home() {
         </div>
 
         {probImage.status === "loading" && (
-          <p className="flex items-center gap-2 rounded-2xl border border-line bg-white p-5 text-sm text-ink-soft">
+          <p className="panel flex items-center gap-2 text-sm text-bone-dim">
             <Loader2 size={14} className="animate-spin" /> Loading probability surface…
           </p>
         )}
         {probImage.status === "error" && (
-          <p className="rounded-2xl border border-line bg-white p-5 text-sm text-rose">Couldn't load raster: {probImage.error}</p>
+          <p className="panel text-sm text-rose-400">Couldn't load raster: {probImage.error}</p>
         )}
         {probImage.status === "success" && (
           <ProspectivityHeatmap
@@ -58,16 +60,16 @@ export default function Home() {
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {regressionEstimate.data && <RegressionCard data={regressionEstimate.data} />}
-          <div className="rounded-2xl border border-line bg-white p-5 shadow-sm shadow-black/[0.03]">
-            <div className="mb-3 flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-soft text-teal">
-                <Search size={16} strokeWidth={2} />
+          <div className="panel">
+            <div className="panel-eyebrow">
+              <div className="chip teal">
+                <Search size={15} strokeWidth={2} />
               </div>
-              <div className="text-sm font-medium text-ink">Data forensics</div>
+              <span className="label">Data forensics</span>
             </div>
             <ul className="space-y-2.5">
               {bullets.map((b) => (
-                <li key={b} className="flex gap-2.5 text-sm text-ink-soft">
+                <li key={b} className="flex gap-2.5 text-sm text-bone-dim">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ochre-bright" />
                   {b}
                 </li>

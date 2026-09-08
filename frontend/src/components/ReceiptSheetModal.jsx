@@ -29,48 +29,45 @@ export default function ReceiptSheetModal({ siteId, onClose }) {
   if (!siteId) return null; // selectedId doubles as isOpen
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 backdrop-blur-sm p-4" onClick={onClose}>
-      <div
-        className="w-full max-w-md rounded-2xl border border-line bg-white p-6 shadow-xl shadow-black/10"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-basalt/70 backdrop-blur-sm p-4" onClick={onClose}>
+      <div className="panel w-full max-w-md !bg-basalt-2 shadow-xl shadow-black/40" onClick={(e) => e.stopPropagation()}>
         <div className="mb-4 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-soft text-teal">
-              <FileText size={16} strokeWidth={2} />
+          <div className="panel-eyebrow !mb-0">
+            <div className="chip teal">
+              <FileText size={15} strokeWidth={2} />
             </div>
-            <h3 className="font-display text-lg text-ink">Verify source — {siteId}</h3>
+            <span className="font-display text-lg text-bone not-italic">Verify source — {siteId}</span>
           </div>
           <button
             onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-ink-soft transition hover:bg-paper-2 hover:text-ink"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-bone-dim transition hover:bg-white/10 hover:text-bone"
           >
             <X size={16} />
           </button>
         </div>
 
         {state.status === "loading" && (
-          <p className="flex items-center gap-2 text-sm text-ink-soft">
+          <p className="flex items-center gap-2 text-sm text-bone-dim">
             <Loader2 size={14} className="animate-spin" /> Looking up source…
           </p>
         )}
         {state.status === "error" && (
-          <p className="flex items-center gap-2 text-sm text-rose">
+          <p className="flex items-center gap-2 text-sm text-rose-400">
             <AlertCircle size={14} /> Couldn't load: {state.error}
           </p>
         )}
         {state.status === "success" && (
-          <div className="space-y-2 rounded-xl bg-paper-2 p-4 text-sm text-ink">
+          <div className="space-y-2 rounded-xl border border-white/10 bg-black/20 p-4 text-sm text-bone">
             <div className="flex justify-between gap-4">
-              <span className="text-ink-soft">File</span>
+              <span className="text-bone-dim">File</span>
               <span className="text-right">{state.data.source_file}</span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="text-ink-soft">Sheet</span>
+              <span className="text-bone-dim">Sheet</span>
               <span className="text-right">{state.data.sheet}</span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="text-ink-soft">Row</span>
+              <span className="text-bone-dim">Row</span>
               <span className="text-right">{state.data.row}</span>
             </div>
           </div>

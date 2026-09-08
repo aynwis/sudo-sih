@@ -44,15 +44,15 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
 
   return (
     <>
-      <div className="rounded-2xl border border-line bg-white p-5 shadow-sm shadow-black/[0.03]">
+      <div className="panel">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-ochre-soft text-ochre">
-              <MapPinned size={16} strokeWidth={2} />
+          <div className="panel-eyebrow !mb-0">
+            <div className="chip ochre">
+              <MapPinned size={15} strokeWidth={2} />
             </div>
-            <div className="text-sm font-medium text-ink">Prospectivity heatmap — tile02_Jamunjhola</div>
+            <span className="label !not-italic !font-medium !text-bone">Prospectivity heatmap — tile02_Jamunjhola</span>
           </div>
-          <div className="flex items-center gap-4 text-xs text-ink-soft">
+          <div className="flex items-center gap-4 text-xs text-bone-dim">
             <span className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-teal-bright" /> mine-level
             </span>
