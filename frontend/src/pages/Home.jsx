@@ -30,8 +30,8 @@ export default function Home() {
           <StatusBadge status={regressionEstimate.data?.status} />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_560px] lg:items-start">
-          {/* Map -- left, wide, normal fixed-height card */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_700px] lg:items-start">
+          {/* Map -- left, narrower now so the data side has room to sit in fewer rows */}
           <div>
             {probImage.status === "loading" && (
               <p className="panel flex items-center gap-2 text-sm text-bone-dim">
@@ -51,46 +51,42 @@ export default function Home() {
             )}
           </div>
 
-          {/* Data -- right, two columns where it fits, full-width where it needs the room */}
-          <div className="grid grid-cols-2 gap-4">
-            <StatCard icon={Database} tone="teal" label="Ground-truth points" value={143} hint="USGS MRDS, deduplicated" />
-            <StatCard
-              icon={MapPin}
-              tone="teal"
-              label="Validation set"
-              value={validationPoints.isLoading ? "…" : validationPoints.isError ? "—" : validationPoints.data.count}
-              hint="tile02_Jamunjhola"
-            />
-            <div className="col-span-2">
-              <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost classifier" />
+          {/* Data -- right, fewer/wider rows so it all fits without scrolling */}
+          <div className="space-y-4">
+            <div className="grid grid-cols-3 gap-4">
+              <StatCard icon={Database} tone="teal" label="Ground-truth points" value={143} hint="USGS MRDS, deduplicated" />
+              <StatCard
+                icon={MapPin}
+                tone="teal"
+                label="Validation set"
+                value={validationPoints.isLoading ? "…" : validationPoints.isError ? "—" : validationPoints.data.count}
+                hint="tile02_Jamunjhola"
+              />
+              <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost" />
             </div>
 
-            {regressionEstimate.data && (
-              <div className="col-span-2">
-                <RegressionCard data={regressionEstimate.data} />
-              </div>
-            )}
+            <div className="grid grid-cols-2 gap-4">
+              {regressionEstimate.data && <RegressionCard data={regressionEstimate.data} />}
 
-            <div className="col-span-2 panel">
-              <div className="panel-eyebrow">
-                <div className="chip teal">
-                  <Search size={15} strokeWidth={2} />
+              <div className="panel">
+                <div className="panel-eyebrow">
+                  <div className="chip teal">
+                    <Search size={15} strokeWidth={2} />
+                  </div>
+                  <span className="label">Data forensics</span>
                 </div>
-                <span className="label">Data forensics</span>
+                <ul className="space-y-2.5">
+                  {bullets.map((b) => (
+                    <li key={b} className="flex gap-2.5 text-sm text-bone-dim">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ochre-bright" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-2.5">
-                {bullets.map((b) => (
-                  <li key={b} className="flex gap-2.5 text-sm text-bone-dim">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ochre-bright" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
             </div>
 
-            <div className="col-span-2">
-              <WhyPanel imageSrc={shapChart} />
-            </div>
+            <WhyPanel imageSrc={shapChart} />
           </div>
         </div>
       </div>
