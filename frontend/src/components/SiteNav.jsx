@@ -4,7 +4,7 @@ const LINKS = [
   { id: "map", label: "Satellite map" },
   { id: "depth", label: "Model" },
   { id: "ledger", label: "Verify" },
-  { id: "dashboard", label: "Live dashboard", cta: true },
+  { id: "dashboard", label: "Live dashboard" },
 ];
 
 // Always-visible nav with a sliding pill that tracks whichever section is
@@ -59,7 +59,7 @@ export default function SiteNav() {
             key={link.id}
             href={`#${link.id}`}
             ref={(el) => (linkRefs.current[link.id] = el)}
-            className={`${link.cta ? "cta" : ""} ${activeId === link.id ? "active" : ""}`}
+            className={activeId === link.id ? "active" : ""}
           >
             {link.label}
           </a>

@@ -117,18 +117,6 @@
 .nav-links a.active {
   color: var(--ochre-bright);
 }
-.nav-links a.cta {
-  color: var(--basalt);
-  background: var(--ochre-bright);
-  font-weight: 500;
-}
-.nav-links a.cta:hover {
-  color: var(--basalt);
-  background: var(--bone);
-}
-.nav-links a.cta.active {
-  color: var(--basalt);
-}
 
 .intro-root section {
   position: relative;
@@ -144,7 +132,7 @@
   flex-direction: column;
   justify-content: flex-end;
   min-height: 100vh;
-  padding-bottom: 9vh;
+  padding-bottom: 17vh;
 }
 .hero-eyebrow {
   font-size: 13px;
