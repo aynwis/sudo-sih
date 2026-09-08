@@ -661,7 +661,7 @@
 .panel {
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 16px 18px;
+  padding: 22px 24px;
   backdrop-filter: blur(10px);
   background: rgba(14, 13, 11, 0.6);
   color: var(--bone);
@@ -700,7 +700,7 @@
 }
 .panel .stat-value {
   font-family: "Fraunces", serif;
-  font-size: 27px;
+  font-size: 34px;
   color: var(--bone);
   line-height: 1;
 }

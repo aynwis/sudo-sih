@@ -19,18 +19,18 @@ export default function Home() {
   const bullets = forensicsBullets(143, 231, 380, 88);
 
   return (
-    <div id="dashboard" className="intro-root px-6 pt-2 pb-6 sm:px-10" style={{ scrollMarginTop: 62 }}>
-      <div className="mx-auto max-w-[1800px] space-y-3">
+    <div id="dashboard" className="intro-root px-6 pt-2 pb-8 sm:px-10" style={{ scrollMarginTop: 62 }}>
+      <div className="mx-auto max-w-[1800px] space-y-5">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <div className="strata-index !mb-1 !text-xs">07 — the live model</div>
-            <h1 className="font-display text-xl text-bone">Everything above, running for real.</h1>
-            <p className="mt-0.5 text-xs text-bone-dim">tile02_Jamunjhola, Maharashtra — updates as the pipeline runs</p>
+            <div className="strata-index !mb-2">07 — the live model</div>
+            <h1 className="font-display text-2xl text-bone">Everything above, running for real.</h1>
+            <p className="mt-1 text-sm text-bone-dim">tile02_Jamunjhola, Maharashtra — updates as the pipeline runs</p>
           </div>
           <StatusBadge status={regressionEstimate.data?.status} />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_700px] lg:items-start">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_720px] lg:items-start">
           {/* Map -- left, narrower now so the data side has room to sit in fewer rows */}
           <div>
             {probImage.status === "loading" && (
@@ -46,14 +46,14 @@ export default function Home() {
                 probabilityImageUrl={probImage.url}
                 bounds={TILE02_BOUNDS}
                 groundTruthSites={validationPoints.data?.sites ?? []}
-                height={620}
+                height={860}
               />
             )}
           </div>
 
-          {/* Data -- right, fewer/wider rows so it all fits without scrolling */}
-          <div className="space-y-3">
-            <div className="grid grid-cols-3 gap-4">
+          {/* Data -- right, fewer/wider rows, sized to use the full column height */}
+          <div className="space-y-5">
+            <div className="grid grid-cols-3 gap-5">
               <StatCard icon={Database} tone="teal" label="Ground-truth points" value={143} hint="USGS MRDS, deduplicated" />
               <StatCard
                 icon={MapPin}
@@ -65,7 +65,7 @@ export default function Home() {
               <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost" />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-5">
               {regressionEstimate.data && <RegressionCard data={regressionEstimate.data} />}
 
               <div className="panel">
@@ -75,7 +75,7 @@ export default function Home() {
                   </div>
                   <span className="label">Data forensics</span>
                 </div>
-                <ul className="space-y-2.5">
+                <ul className="space-y-3">
                   {bullets.map((b) => (
                     <li key={b} className="flex gap-2.5 text-sm text-bone-dim">
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ochre-bright" />

@@ -12,7 +12,7 @@ export default function WhyPanel({ imageSrc }) {
         <span className="label">What drove this score</span>
       </div>
       {imageSrc ? (
-        <img src={imageSrc} alt="SHAP feature importance" className="mx-auto max-h-[220px] w-auto rounded-xl object-contain" />
+        <img src={imageSrc} alt="SHAP feature importance" className="mx-auto max-h-[340px] w-auto rounded-xl object-contain" />
       ) : (
         <div className="rounded-xl border border-white/10 p-6 text-center text-sm text-bone-dim">
           Feature-importance panel unavailable.
