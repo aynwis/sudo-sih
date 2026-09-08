@@ -19,8 +19,8 @@ export default function Home() {
   const bullets = forensicsBullets(143, 231, 380, 88);
 
   return (
-    <div id="dashboard" className="intro-root px-6 py-6 sm:px-10" style={{ scrollMarginTop: 70 }}>
-      <div className="mx-auto max-w-[1800px] space-y-4">
+    <div id="dashboard" className="intro-root px-6 pt-2 pb-6 sm:px-10" style={{ scrollMarginTop: 62 }}>
+      <div className="mx-auto max-w-[1800px] space-y-3">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <div className="strata-index !mb-1 !text-xs">07 — the live model</div>
