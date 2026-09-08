@@ -84,6 +84,7 @@ build/
 # Large arrays, caches, and weights
 *.npy
 *.npz
+/ml/**/*.csv
 *.pkl
 *.pickle
 *.joblib

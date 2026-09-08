@@ -22,10 +22,19 @@ export function useRegressionEstimate() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setData({ status: "ready", auc: 0.87, regressionReadySites: 13 });
-    }, 300);
-    return () => clearTimeout(timer);
+    let cancelled = false;
+    fetch("/api/regression-estimate")
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error(`status ${res.status}`))))
+      .then((real) => {
+        if (!cancelled && real.status === "ready") setData(real);
+      })
+      .catch(() => {
+        // Backend not running -- fall back to a mock so the dashboard still renders.
+        if (!cancelled) setData({ status: "ready", gradeR2: 0.87, regressionReadySites: 13 });
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return { data };

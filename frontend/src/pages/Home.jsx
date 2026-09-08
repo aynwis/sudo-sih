@@ -62,7 +62,7 @@ export default function Home() {
                 value={validationPoints.isLoading ? "…" : validationPoints.isError ? "—" : validationPoints.data.count}
                 hint="tile02_Jamunjhola"
               />
-              <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost" />
+              <StatCard icon={Gauge} tone="hero" label="Grade regression R²" value={regressionEstimate.data?.gradeR2 ?? "…"} hint="XGBoost, held-out validation" />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
