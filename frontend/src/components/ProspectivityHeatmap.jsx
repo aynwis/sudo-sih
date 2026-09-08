@@ -60,11 +60,29 @@ function regressionSitesToGeoJson(sites) {
  * `probabilityImageUrl` is a rendered PNG (or data URI) of the probability
  * array. `bounds` is the {left, right, top, bottom} shape from bounds.json.
  */
+// The real regression sites cluster tightly (all within ~50km, around the
+// Nagpur/Bhandara manganese belt) -- at the wide India-overview zoom they
+// collapse into a single unclickable pixel, so default there instead of
+// `bounds`'s center when we have real sites to show.
+const REGRESSION_CLUSTER_VIEW =
+  REGRESSION_SITES.length > 0
+    ? {
+        longitude: REGRESSION_SITES.reduce((sum, s) => sum + s.lon, 0) / REGRESSION_SITES.length,
+        latitude: REGRESSION_SITES.reduce((sum, s) => sum + s.lat, 0) / REGRESSION_SITES.length,
+        zoom: 9.3,
+      }
+    : null;
+
 export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites, height = 520 }) {
   const [selectedSiteId, setSelectedSiteId] = useState(null);
   const [selectedRegressionSiteId, setSelectedRegressionSiteId] = useState(null);
   const geojson = sitesToGeoJson(groundTruthSites);
   const regressionGeojson = regressionSitesToGeoJson(REGRESSION_SITES);
+  const initialView = REGRESSION_CLUSTER_VIEW ?? {
+    longitude: (bounds.left + bounds.right) / 2,
+    latitude: (bounds.top + bounds.bottom) / 2,
+    zoom: 5,
+  };
 
   function handleMapClick(event) {
     const feature = event.features && event.features[0];
@@ -101,11 +119,7 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
 
         <div className="overflow-hidden rounded-xl">
           <Map
-            initialViewState={{
-              longitude: (bounds.left + bounds.right) / 2,
-              latitude: (bounds.top + bounds.bottom) / 2,
-              zoom: 5,
-            }}
+            initialViewState={initialView}
             style={{ width: "100%", height }}
             mapStyle={SATELLITE_STYLE}
             interactiveLayerIds={["ground-truth-circles", "regression-site-circles"]}

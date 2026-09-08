@@ -101,3 +101,6 @@ cache/
 
 # Generated demo fixtures
 tools/fixtures/
+
+# Google Earth Engine service account key -- a real credential, never commit
+backend/gee-service-account.json
