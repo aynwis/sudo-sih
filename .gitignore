@@ -95,3 +95,6 @@ build/
 # Cache directories
 .cache/
 cache/
+
+# Generated demo fixtures
+tools/fixtures/
