@@ -3,7 +3,7 @@
 // blank box, plot the same overlay + ground-truth markers on plain
 // absolutely-positioned divs so the interaction (click a marker, see its
 // receipt-sheet data) still actually works without one.
-export default function NoTokenMapPreview({ probabilityImageUrl, bounds, groundTruthSites, onSelectSite }) {
+export default function NoTokenMapPreview({ probabilityImageUrl, bounds, groundTruthSites, onSelectSite, height = 480 }) {
   function toPercent(site) {
     const x = ((site.lon - bounds.left) / (bounds.right - bounds.left)) * 100;
     const y = ((bounds.top - site.lat) / (bounds.top - bounds.bottom)) * 100;
@@ -13,7 +13,7 @@ export default function NoTokenMapPreview({ probabilityImageUrl, bounds, groundT
   return (
     <div
       className="relative w-full overflow-hidden rounded-xl bg-basalt"
-      style={{ height: 480, backgroundImage: `url(${probabilityImageUrl})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      style={{ height, backgroundImage: `url(${probabilityImageUrl})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
       <div className="absolute inset-0 bg-basalt/30" />
 

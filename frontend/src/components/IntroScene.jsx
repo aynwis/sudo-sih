@@ -14,7 +14,7 @@ export default function IntroScene() {
   const canvasRef = useRef(null);
   const veilRef = useRef(null);
 
-  useTerrainScene(canvasRef, veilRef, "ledger");
+  useTerrainScene(canvasRef, veilRef, "close");
 
   return (
     <div className="intro-root">
@@ -104,14 +104,24 @@ export default function IntroScene() {
 
         <section className="ledger" id="ledger">
           <div className="ledger-head">
+            <div className="strata-index">05 — verify, live</div>
             <h2>Click a number, see the file it came from.</h2>
             <p>Every stat on this page traces to one of these. This is the actual receipt-sheet pattern the dashboard uses live, below.</p>
           </div>
           <ReceiptLedgerPreview />
-          <div className="ledger-handoff">
-            <span className="strata-index">05 — see it live</span>
-            <p>Everything above was the pitch. Scroll on — what's below is the actual tool.</p>
-          </div>
+        </section>
+
+        <section className="close" id="close">
+          <div className="close-glow" />
+          <div className="strata-index">06 — see it live</div>
+          <h2>See the live model, not a mockup of one.</h2>
+          <p className="close-sub">
+            Everything above was the pitch. Below is the actual tool — real satellite data, real ground-truth
+            markers, click-to-verify traceability.
+          </p>
+          <a href="#dashboard" className="close-cta">
+            Open the live dashboard <span className="arrow">→</span>
+          </a>
         </section>
       </div>
     </div>

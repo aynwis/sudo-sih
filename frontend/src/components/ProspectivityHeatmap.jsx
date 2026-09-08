@@ -32,7 +32,7 @@ const CIRCLE_COLOR = [
  * `probabilityImageUrl` is a rendered PNG (or data URI) of the probability
  * array. `bounds` is the {left, right, top, bottom} shape from bounds.json.
  */
-export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites }) {
+export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites, height = 480 }) {
   const [selectedSiteId, setSelectedSiteId] = useState(null);
   const geojson = sitesToGeoJson(groundTruthSites);
   const hasMapboxToken = Boolean(import.meta.env.VITE_MAPBOX_TOKEN);
@@ -71,7 +71,7 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
                 latitude: (bounds.top + bounds.bottom) / 2,
                 zoom: 9,
               }}
-              style={{ width: "100%", height: 480 }}
+              style={{ width: "100%", height }}
               mapStyle="mapbox://styles/mapbox/dark-v11"
               interactiveLayerIds={["ground-truth-circles"]}
               onClick={handleMapClick}
@@ -99,6 +99,7 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
               bounds={bounds}
               groundTruthSites={groundTruthSites}
               onSelectSite={setSelectedSiteId}
+              height={height}
             />
           )}
         </div>

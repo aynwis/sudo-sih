@@ -20,66 +20,70 @@ export default function Home() {
 
   return (
     <div id="dashboard" className="intro-root px-6 py-16 sm:px-10" style={{ scrollMarginTop: 70 }}>
-      <div className="mx-auto max-w-6xl space-y-6">
+      <div className="mx-auto max-w-7xl space-y-6">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <div className="strata-index !mb-2">06 — the live model</div>
+            <div className="strata-index !mb-2">07 — the live model</div>
             <h1 className="font-display text-3xl text-bone">Everything above, running for real.</h1>
             <p className="mt-1 text-sm text-bone-dim">tile02_Jamunjhola, Maharashtra — updates as the pipeline runs</p>
           </div>
           <StatusBadge status={regressionEstimate.data?.status} />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <StatCard icon={Database} tone="teal" label="Ground-truth points" value={143} hint="USGS MRDS, deduplicated" />
-          <StatCard
-            icon={MapPin}
-            tone="teal"
-            label="Validation set"
-            value={validationPoints.isLoading ? "…" : validationPoints.isError ? "—" : validationPoints.data.count}
-            hint="tile02_Jamunjhola"
-          />
-          <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost classifier" />
-        </div>
-
-        {probImage.status === "loading" && (
-          <p className="panel flex items-center gap-2 text-sm text-bone-dim">
-            <Loader2 size={14} className="animate-spin" /> Loading probability surface…
-          </p>
-        )}
-        {probImage.status === "error" && (
-          <p className="panel text-sm text-rose-400">Couldn't load raster: {probImage.error}</p>
-        )}
-        {probImage.status === "success" && (
-          <ProspectivityHeatmap
-            probabilityImageUrl={probImage.url}
-            bounds={TILE02_BOUNDS}
-            groundTruthSites={validationPoints.data?.sites ?? []}
-          />
-        )}
-
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          {regressionEstimate.data && <RegressionCard data={regressionEstimate.data} />}
-          <div className="panel">
-            <div className="panel-eyebrow">
-              <div className="chip teal">
-                <Search size={15} strokeWidth={2} />
-              </div>
-              <span className="label">Data forensics</span>
-            </div>
-            <ul className="space-y-2.5">
-              {bullets.map((b) => (
-                <li key={b} className="flex gap-2.5 text-sm text-bone-dim">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ochre-bright" />
-                  {b}
-                </li>
-              ))}
-            </ul>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px] lg:items-start">
+          {/* Map -- left, tall, sticky so it stays put while the data column scrolls */}
+          <div className="lg:sticky lg:top-24">
+            {probImage.status === "loading" && (
+              <p className="panel flex items-center gap-2 text-sm text-bone-dim">
+                <Loader2 size={14} className="animate-spin" /> Loading probability surface…
+              </p>
+            )}
+            {probImage.status === "error" && (
+              <p className="panel text-sm text-rose-400">Couldn't load raster: {probImage.error}</p>
+            )}
+            {probImage.status === "success" && (
+              <ProspectivityHeatmap
+                probabilityImageUrl={probImage.url}
+                bounds={TILE02_BOUNDS}
+                groundTruthSites={validationPoints.data?.sites ?? []}
+                height={640}
+              />
+            )}
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          <WhyPanel imageSrc={shapChart} />
+          {/* Data -- right, stacked vertically */}
+          <div className="space-y-4">
+            <StatCard icon={Database} tone="teal" label="Ground-truth points" value={143} hint="USGS MRDS, deduplicated" />
+            <StatCard
+              icon={MapPin}
+              tone="teal"
+              label="Validation set"
+              value={validationPoints.isLoading ? "…" : validationPoints.isError ? "—" : validationPoints.data.count}
+              hint="tile02_Jamunjhola"
+            />
+            <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost classifier" />
+
+            {regressionEstimate.data && <RegressionCard data={regressionEstimate.data} />}
+
+            <div className="panel">
+              <div className="panel-eyebrow">
+                <div className="chip teal">
+                  <Search size={15} strokeWidth={2} />
+                </div>
+                <span className="label">Data forensics</span>
+              </div>
+              <ul className="space-y-2.5">
+                {bullets.map((b) => (
+                  <li key={b} className="flex gap-2.5 text-sm text-bone-dim">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ochre-bright" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <WhyPanel imageSrc={shapChart} />
+          </div>
         </div>
       </div>
     </div>
