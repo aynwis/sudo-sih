@@ -595,7 +595,9 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  min-height: 90vh;
+  min-height: 50vh;
+  padding-top: 8vh;
+  padding-bottom: 8vh;
   position: relative;
   overflow: hidden;
 }
