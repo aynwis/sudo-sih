@@ -46,14 +46,14 @@ export default function Home() {
                 probabilityImageUrl={probImage.url}
                 bounds={TILE02_BOUNDS}
                 groundTruthSites={validationPoints.data?.sites ?? []}
-                height={860}
+                height={650}
               />
             )}
           </div>
 
           {/* Data -- right, fewer/wider rows, sized to use the full column height */}
-          <div className="space-y-5">
-            <div className="grid grid-cols-3 gap-5">
+          <div className="space-y-3">
+            <div className="grid grid-cols-3 gap-3">
               <StatCard icon={Database} tone="teal" label="Ground-truth points" value={143} hint="USGS MRDS, deduplicated" />
               <StatCard
                 icon={MapPin}
@@ -65,7 +65,7 @@ export default function Home() {
               <StatCard icon={Gauge} tone="hero" label="Validation AUC" value={regressionEstimate.data?.auc ?? "…"} hint="single XGBoost" />
             </div>
 
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 gap-3">
               {regressionEstimate.data && <RegressionCard data={regressionEstimate.data} />}
 
               <div className="panel">
@@ -75,9 +75,9 @@ export default function Home() {
                   </div>
                   <span className="label">Data forensics</span>
                 </div>
-                <ul className="space-y-3">
+                <ul className="space-y-2">
                   {bullets.map((b) => (
-                    <li key={b} className="flex gap-2.5 text-sm text-bone-dim">
+                    <li key={b} className="flex gap-2.5 text-xs text-bone-dim">
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ochre-bright" />
                       {b}
                     </li>
