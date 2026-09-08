@@ -30,7 +30,7 @@ export default function Home() {
           <StatusBadge status={regressionEstimate.data?.status} />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px] lg:items-start">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px] lg:items-start">
           {/* Map -- left, tall, sticky so it stays put while the data column scrolls */}
           <div className="lg:sticky lg:top-24">
             {probImage.status === "loading" && (
@@ -46,7 +46,7 @@ export default function Home() {
                 probabilityImageUrl={probImage.url}
                 bounds={TILE02_BOUNDS}
                 groundTruthSites={validationPoints.data?.sites ?? []}
-                height={640}
+                height={800}
               />
             )}
           </div>

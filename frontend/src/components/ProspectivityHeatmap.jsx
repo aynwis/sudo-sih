@@ -81,7 +81,7 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
             initialViewState={{
               longitude: (bounds.left + bounds.right) / 2,
               latitude: (bounds.top + bounds.bottom) / 2,
-              zoom: 9,
+              zoom: 4.3,
             }}
             style={{ width: "100%", height }}
             mapStyle={SATELLITE_STYLE}
