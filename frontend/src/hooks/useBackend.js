@@ -1,72 +1,33 @@
-import { useEffect, useState } from "react";
-import { MOCK_GROUND_TRUTH_SITES } from "../lib/mockData";
+import { useQuery } from "@tanstack/react-query";
+import {
+  fetchValidationPoints,
+  fetchRegressionEstimate,
+} from "../lib/api";
 
-// Mocks standing in for Syed's validation-points endpoint and the
-// regression estimate endpoint until they're live (Day 4). Shape matches
-// what a React Query hook would return so swapping the implementation
-// later doesn't touch Home.jsx.
 export function useValidationPoints() {
-  const [state, setState] = useState({ isLoading: true, isError: false, data: null });
+  const query = useQuery({
+    queryKey: ["validation-points"],
+    queryFn: fetchValidationPoints,
+  });
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/validation-points")
-      .then((res) => (res.ok ? res.json() : Promise.reject(new Error(`status ${res.status}`))))
-      .then((real) => {
-        if (!cancelled) setState({ isLoading: false, isError: false, data: real });
-      })
-      .catch(() => {
-        // Syed's validation-points endpoint isn't live yet -- fall back to
-        // the mock ground-truth sites so the map still renders points.
-        if (!cancelled) {
-          setState({ isLoading: false, isError: false, data: { count: MOCK_GROUND_TRUTH_SITES.length, sites: MOCK_GROUND_TRUTH_SITES } });
-        }
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  return state;
+  return {
+    isLoading: query.isLoading,
+    isError: query.isError,
+    data: query.data ?? null,
+    error: query.error,
+  };
 }
 
-// The real result of running backend/main.py's compute_regression_estimate()
-// against Sahil's actual pretrained model + training data (held-out
-// validation split, random_state=42, test_size=0.2) -- not a guess. Baked
-// in here because there's no live backend deployed on Vercel (this was a
-// deliberate scope call: live per-coordinate GEE inference needs a real
-// server + Sahil's Earth Engine service-account credentials, which wasn't
-// worth the time for this build). If a local backend IS running (dev),
-// its live response is used instead; otherwise this snapshot renders,
-// and it's the genuine model output, just computed once instead of live.
-const REAL_REGRESSION_SNAPSHOT = {
-  status: "ready",
-  gradeR2: 0.8678,
-  tonnageR2: 0.9738,
-  meanGradePct: 25.41,
-  meanTonnageMt: 11.22,
-  regressionReadySites: 209715,
-};
-
 export function useRegressionEstimate() {
-  const [data, setData] = useState(null);
+  const query = useQuery({
+    queryKey: ["regression-estimate"],
+    queryFn: fetchRegressionEstimate,
+  });
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/regression-estimate")
-      .then((res) => (res.ok ? res.json() : Promise.reject(new Error(`status ${res.status}`))))
-      .then((real) => {
-        if (!cancelled && (real.status === "ready" || real.status === "final")) setData(real);
-      })
-      .catch(() => {
-        // No backend reachable (e.g. the deployed site) -- use the real
-        // snapshot rather than a placeholder guess.
-        if (!cancelled) setData(REAL_REGRESSION_SNAPSHOT);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  return { data };
+  return {
+    isLoading: query.isLoading,
+    isError: query.isError,
+    data: query.data ?? null,
+    error: query.error,
+  };
 }
