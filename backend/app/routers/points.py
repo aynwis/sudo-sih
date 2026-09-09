@@ -5,16 +5,15 @@ from typing import List
 from fastapi import APIRouter, HTTPException
 from app.api_contracts import ValidationPoint, ValidationPointsResponse
 
-router = APIRouter(prefix="/api", tags=["points"])
+router = APIRouter(prefix="/api/v1", tags=["points"])
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 MOCK_DIR = BASE_DIR / "data" / "mock"
 
-ALLOWED_PRECISION = {"mine-level", "district-level", "state-level"}
+ALLOWED_PRECISION = {"mine_level", "block_level"}
 
-
-@router.get("/points", response_model=ValidationPointsResponse)
-def get_points(tile_id: str = "tile02_Jamunjhola", source: str = "mock"):
+@router.get("/validation-points", response_model=ValidationPointsResponse)
+def get_points(tile_id: str = "tile02_jamunjhola", source: str = "mock"):
     csv_path = MOCK_DIR / "points_55.csv"
 
     if not csv_path.exists():
@@ -38,7 +37,11 @@ def get_points(tile_id: str = "tile02_Jamunjhola", source: str = "mock"):
                 continue
 
             raw_prec = row.get("precision_flag") or row.get("precision")
-            precision = raw_prec if raw_prec in ALLOWED_PRECISION else "mine-level"
+            if raw_prec:
+                raw_prec = raw_prec.lower().replace("-", "_").replace(" ", "_")
+
+            # Fallback safely to "mine_level" (matches schema literal)
+            precision = raw_prec if raw_prec in ALLOWED_PRECISION else "mine_level"
 
             points_list.append(
                 ValidationPoint(

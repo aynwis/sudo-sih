@@ -8,50 +8,42 @@ from PIL import Image
 
 from app.api_contracts import Bounds, RasterResponse
 
-router = APIRouter(prefix="/api", tags=["raster"])
+router = APIRouter(prefix="/api/v1", tags=["raster"])
 
-#path points to the 'backend/' root directory
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-MOCK_DIR = BASE_DIR / "data" / "mock"
+DATA_DIR = BASE_DIR / "data"
+KNOWN_TILE_ID = "tile02_jamunjhola"
 
+@router.get("/raster/{tile_id}", response_model=RasterResponse)
+def get_raster(tile_id: str):
+    if tile_id.lower() != KNOWN_TILE_ID:
+        raise HTTPException(status_code=404, detail=f"Unknown tile_id='{tile_id}'")
 
-@router.get("/raster", response_model=RasterResponse)
-def get_raster(tile_id: str = "tile02_Jamunjhola", source: str = "mock"):
-    npy_path = MOCK_DIR / "probability.npy"
-    bounds_path = MOCK_DIR / "bounds.json"
+    for source, folder in (("real", "real"), ("mock", "mock")):
+        npy_path = DATA_DIR / folder / "probability.npy"
+        bounds_path = DATA_DIR / folder / "bounds.json"
 
-    #Ensure files exist, raise 404 not found if not
-    if not npy_path.exists() or not bounds_path.exists():
-        raise HTTPException(
-            status_code=404,
-            detail=f"Mock data files not found in {MOCK_DIR}",
-        )
+        if npy_path.exists() and bounds_path.exists():
+            data = np.load(npy_path)
+            bounds_dict = json.loads(bounds_path.read_text())
 
-    #Load the binary probability array
-    data = np.load(npy_path)
+            colormap = mpl.colormaps["viridis"]
+            rgba_image = colormap(data)
+            rgba_uint8 = (rgba_image * 255).astype(np.uint8)
 
-    #Load bounding box metadata
-    with open(bounds_path, "r") as f: bounds_dict = json.load(f)
+            img = Image.fromarray(rgba_uint8, mode="RGBA")
+            buffer = io.BytesIO()
+            img.save(buffer, format="PNG")
+            buffer.seek(0)
 
-    #Colorize array of floats from 0.0 to 1.0 into RGBA with Matplotlib
-    colormap = mpl.colormaps["viridis"]
-    rgba_image = colormap(data)
-    rgba_uint8 = (rgba_image * 255).astype(np.uint8)
+            # Raw base64 string (no data:image/png;base64, prefix)
+            img_b64 = base64.b64encode(buffer.read()).decode("ascii")
 
-    #Save RGBA array into an in-memory PNG buffer (RAM, no disk writes)
-    img = Image.fromarray(rgba_uint8, mode="RGBA")
-    buffer = io.BytesIO()
-    img.save(buffer, format="PNG")
-    buffer.seek(0)
+            return RasterResponse(
+                tile_id=tile_id,
+                image_base64=img_b64,
+                bounds=Bounds(**bounds_dict),
+                source=source,
+            )
 
-    #Encode to Base 64 string
-    img_b64 = base64.b64encode(buffer.read()).decode("utf-8")
-    data_uri = f"data:image/png;base64,{img_b64}"
-
-    #Return matching your Pydantic schema
-    return RasterResponse(
-        tile_id=tile_id,
-        image_base64=data_uri,
-        bounds=Bounds(**bounds_dict),
-        source="mock",
-    )
+    raise HTTPException(status_code=404, detail="No probability data found in data/real or data/mock")
