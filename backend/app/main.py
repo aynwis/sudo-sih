@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import raster, points
+from app.routers import raster, points, receipts
 
 app = FastAPI(
     title="Mineral Prospectivity API",
@@ -9,3 +9,4 @@ app = FastAPI(
 
 app.include_router(raster.router)
 app.include_router(points.router)
+app.include_router(receipts.router)
