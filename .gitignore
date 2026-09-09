@@ -97,7 +97,6 @@ build/
 
 # Cache directories
 .cache/
-cache/
 
 # Generated demo fixtures
 tools/fixtures/
@@ -107,3 +106,8 @@ backend/gee-service-account.json
 
 # Exception: allow mock test fixtures into the repo
 !data/mock/*.npy
+
+# Ignore temporary cache files, but commit the demo tile
+backend/cache/*
+!backend/cache/probability.png
+!backend/cache/probability.meta.json
