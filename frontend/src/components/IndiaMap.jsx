@@ -167,7 +167,7 @@ export default function IndiaMap() {
             <div className="r-status">Active satellite coverage</div>
             <div className="stat"><span>Ground-truth points</span><span className="v">143</span></div>
             <div className="stat"><span>Validated in tile02</span><span className="v">55</span></div>
-            <div className="stat"><span>Validation AUC</span><span className="v">0.87</span></div>
+            <div className="stat"><span>Raster source</span><span className="v">demo cache</span></div>
             <div className="stat"><span>Regression-ready</span><span className="v">13</span></div>
           </div>
         ) : (

@@ -38,7 +38,12 @@ _regression_cache = None
 def _read_cache(path: Path):
     if not path.exists():
         return None
-    return json.loads(path.read_text(encoding="utf-8"))
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        # A partial/corrupt cache must be treated as a cache miss so the
+        # endpoint can either refresh live data or return a clear 503.
+        return None
 
 
 def _write_cache(path: Path, payload: dict) -> None:

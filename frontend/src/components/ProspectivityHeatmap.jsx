@@ -73,7 +73,7 @@ const REGRESSION_CLUSTER_VIEW =
       }
     : null;
 
-export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites, height = 520 }) {
+export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, groundTruthSites, rasterSource = "mock", height = 520 }) {
   const [selectedSiteId, setSelectedSiteId] = useState(null);
   const [selectedRegressionSiteId, setSelectedRegressionSiteId] = useState(null);
   const geojson = sitesToGeoJson(groundTruthSites);
@@ -104,6 +104,7 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
             </div>
             <span className="label !not-italic !font-medium !text-bone">Prospectivity heatmap — tile02_Jamunjhola</span>
           </div>
+          <span className="pill-badge pending">{rasterSource === "real" ? "live raster" : "demo raster"}</span>
           <div className="flex items-center gap-4 text-xs text-bone-dim">
             <span className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-teal-bright" /> mine-level

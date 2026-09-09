@@ -29,7 +29,7 @@ export default function IntroScene() {
             Reading the ground <span className="accent">before</span> anyone drills it.
           </h1>
           <p className="hero-sub">
-            An AI/ML prospectivity model built on real satellite imagery, validated against real ground-truth sites,
+            An AI/ML prospectivity workflow built around satellite imagery, validated against real ground-truth sites,
             with every number traceable back to the file it came from.
           </p>
           <div className="hero-meta">
@@ -51,11 +51,10 @@ export default function IntroScene() {
         <section className="strata" id="terrain-intro">
           <div className="strata-copy">
             <div className="strata-index">01 — the terrain behind you</div>
-            <h2>Every ridge you're seeing is real elevation data.</h2>
+            <h2>A terrain-inspired view of the pipeline.</h2>
             <p>
-              The mesh in the background is displaced by the tile's actual DEM and probability surface — not a
-              decorative shape. As you scroll, the camera moves through the same layers the model reads: elevation,
-              spectral index, SAR roughness, prospectivity.
+              The background is a visual stand-in for the tile's DEM and probability surface. As you scroll, the camera
+              moves through the same layers the model reads: elevation, spectral index, SAR roughness, prospectivity.
             </p>
           </div>
           <div className="strata-card">
@@ -87,7 +86,7 @@ export default function IntroScene() {
         <section className="map-section" id="map">
           <div className="map-head">
             <div className="strata-index">03 — where the model is actually looking</div>
-            <h2>One country. One tile with real coverage.</h2>
+            <h2>One country. One pilot tile.</h2>
             <p>Each bar is a coverage tile across India's landmass. Only Maharashtra is lit — click it to load the pipeline stats for tile02_Jamunjhola.</p>
           </div>
           <IndiaMap />
@@ -114,10 +113,10 @@ export default function IntroScene() {
         <section className="close" id="close">
           <div className="close-glow" />
           <div className="strata-index">06 — see it live</div>
-          <h2>See the live model, not a mockup of one.</h2>
+          <h2>See the pipeline live.</h2>
           <p className="close-sub">
-            Everything above was the pitch. Below is the actual tool — real satellite data, real ground-truth
-            markers, click-to-verify traceability.
+            Everything above was the pitch. Below is the actual tool — traceable ground-truth markers, a deterministic
+            probability surface for the demo, and click-to-verify source records.
           </p>
           <a href="#dashboard" className="close-cta">
             Open the live dashboard <span className="arrow">→</span>

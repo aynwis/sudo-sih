@@ -8,24 +8,24 @@ async function fetchProbabilityImage(tileId) {
   return {
     url: `data:image/png;base64,${body.image_base64}`,
     bounds: body.bounds,
+    source: body.source,
   };
 }
 
 export function useProbabilityImage(tileId = "tile02_jamunjhola") {
-  const [state, setState] = useState({ status: "loading", url: null, bounds: null, error: null });
+  const [state, setState] = useState({ status: "loading", url: null, bounds: null, source: null, error: null });
 
   useEffect(() => {
     let cancelled = false;
 
     fetchProbabilityImage(tileId)
-      .then(({ url, bounds }) => {
-        if (!cancelled) setState({ status: "success", url, bounds, error: null });
+      .then(({ url, bounds, source }) => {
+        if (!cancelled) setState({ status: "success", url, bounds, source, error: null });
       })
       .catch(() => {
-        // Ayaan's raster endpoint isn't up yet -- fall back to the mock
-        // gradient so the heatmap still renders. Remove this fallback once
-        // his endpoint is live.
-        if (!cancelled) setState({ status: "success", url: mockProbabilityImageUrl(), bounds: TILE02_BOUNDS, error: null });
+        // Keep the walkthrough usable during a backend outage. This is
+        // explicitly marked as a demo source in the dashboard.
+        if (!cancelled) setState({ status: "success", url: mockProbabilityImageUrl(), bounds: TILE02_BOUNDS, source: "mock", error: null });
       });
 
     return () => {
