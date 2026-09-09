@@ -17,6 +17,11 @@ def _find_source_dir() -> tuple[Path, str] | None:
         npy_path = DATA_DIR / folder / "probability.npy"
         if npy_path.exists():
             return DATA_DIR / folder, source
+    # The checked-in demo image is sufficient to rebuild the deterministic
+    # mock grid when generated .npy artifacts are unavailable.
+    mock_png = DATA_DIR / "mock" / "mock_map.png"
+    if mock_png.exists():
+        return DATA_DIR / "mock", "mock"
     return None
 
 def grid_to_png_bytes(grid: np.ndarray) -> bytes:
@@ -36,7 +41,11 @@ def precompute() -> None:
         raise FileNotFoundError("No probability.npy found in data/real or data/mock")
     src_dir, source = found
 
-    grid = np.load(src_dir / "probability.npy")
+    npy_path = src_dir / "probability.npy"
+    if npy_path.exists():
+        grid = np.load(npy_path)
+    else:
+        grid = np.asarray(Image.open(src_dir / "mock_map.png").convert("L"), dtype=np.float32) / 255.0
     bounds = json.loads((src_dir / "bounds.json").read_text())
 
     CACHE_DIR.mkdir(parents=True, exist_ok=True)

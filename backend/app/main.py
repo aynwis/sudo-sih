@@ -1,8 +1,10 @@
-import os
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
+import joblib
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
 
 from app.api_contracts import ReceiptResponse
 from app.services.receipt_service import lookup_receipt
@@ -22,6 +24,41 @@ app.add_middleware(
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 EXCEL_PATH = DATA_DIR / "PS26009_GroundTruth_Supplemented.xlsx"
+ML_DIR = BASE_DIR.parent / "ml" / "manganese"
+MODEL_PATH = ML_DIR / "manganese_xgboost_models.pkl"
+CSV_PATH = ML_DIR / "final_flattened_training_data.csv"
+
+_regression_cache = None
+
+
+def _compute_regression_estimate():
+    if not MODEL_PATH.exists() or not CSV_PATH.exists():
+        return None
+    bundle = joblib.load(MODEL_PATH)
+    df = pd.read_csv(CSV_PATH)
+    features = bundle["feature_names"]
+    x = df[features]
+    y_grade = df["grade_target"]
+    y_tonnage = df["tonnage_target"]
+    _, x_val, _, grade_val, _, tonnage_val = train_test_split(
+        x, y_grade, y_tonnage, test_size=0.2, random_state=42
+    )
+    grade_pred = bundle["grade_model"].predict(x_val)
+    tonnage_pred = bundle["tonnage_model"].predict(x_val)
+    grade_r2 = round(float(r2_score(grade_val, grade_pred)), 4)
+    tonnage_r2 = round(float(r2_score(tonnage_val, tonnage_pred)), 4)
+    mean_grade = round(float(grade_pred.mean()), 2)
+    mean_tonnage = round(float(tonnage_pred.mean()), 2)
+    return {
+        "status": "final",
+        "gradeR2": grade_r2,
+        "tonnageR2": tonnage_r2,
+        "meanGradePct": mean_grade,
+        "meanTonnageMt": mean_tonnage,
+        "predicted_grade_pct": mean_grade,
+        "confidence_interval_pct": None,
+        "method": "XGBoost regression (grade + tonnage), held-out validation",
+    }
 
 
 # Validation Points
@@ -56,16 +93,10 @@ def get_validation_points():
 @app.get("/api/regression-estimate")
 @app.get("/api/v1/regression-estimate")
 def get_regression_estimate():
-    return {
-        "status": "final",
-        "gradeR2": 0.86,
-        "tonnageR2": 0.97,
-        "meanGradePct": 13.78,
-        "meanTonnageMt": 4.54,
-        "predicted_grade_pct": 13.78,
-        "confidence_interval_pct": [10.06, 28.12],
-        "method": "XGBoost Multi-Sensor Regression",
-    }
+    global _regression_cache
+    if _regression_cache is None:
+        _regression_cache = _compute_regression_estimate()
+    return _regression_cache or {"status": "unavailable"}
 
 
 # Receipt Sheet Lookup
