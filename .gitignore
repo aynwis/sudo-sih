@@ -104,3 +104,6 @@ tools/fixtures/
 
 # Google Earth Engine service account key -- a real credential, never commit
 backend/gee-service-account.json
+
+# Exception: allow mock test fixtures into the repo
+!data/mock/*.npy
