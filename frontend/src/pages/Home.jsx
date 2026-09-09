@@ -7,11 +7,10 @@ import WhyPanel from "../components/WhyPanel";
 import { useProbabilityImage } from "../hooks/useProbabilityImage";
 import { useRegressionEstimate, useValidationPoints } from "../hooks/useBackend";
 import { forensicsBullets } from "../lib/forensicsBullets";
-import { TILE02_BOUNDS } from "../lib/mockData";
 import "../styles/intro.css";
 
 export default function Home() {
-  const probImage = useProbabilityImage("/api/raster/probability.png");
+  const probImage = useProbabilityImage("tile02_jamunjhola");
   const validationPoints = useValidationPoints();
   const regressionEstimate = useRegressionEstimate();
 
@@ -43,7 +42,7 @@ export default function Home() {
             {probImage.status === "success" && (
               <ProspectivityHeatmap
                 probabilityImageUrl={probImage.url}
-                bounds={TILE02_BOUNDS}
+                bounds={probImage.bounds}
                 groundTruthSites={validationPoints.data?.sites ?? []}
                 height={650}
               />

@@ -9,10 +9,22 @@ export function useValidationPoints() {
   const [state, setState] = useState({ isLoading: true, isError: false, data: null });
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setState({ isLoading: false, isError: false, data: { count: MOCK_GROUND_TRUTH_SITES.length, sites: MOCK_GROUND_TRUTH_SITES } });
-    }, 300);
-    return () => clearTimeout(timer);
+    let cancelled = false;
+    fetch("/api/validation-points")
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error(`status ${res.status}`))))
+      .then((real) => {
+        if (!cancelled) setState({ isLoading: false, isError: false, data: real });
+      })
+      .catch(() => {
+        // Syed's validation-points endpoint isn't live yet -- fall back to
+        // the mock ground-truth sites so the map still renders points.
+        if (!cancelled) {
+          setState({ isLoading: false, isError: false, data: { count: MOCK_GROUND_TRUTH_SITES.length, sites: MOCK_GROUND_TRUTH_SITES } });
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return state;
@@ -44,7 +56,7 @@ export function useRegressionEstimate() {
     fetch("/api/regression-estimate")
       .then((res) => (res.ok ? res.json() : Promise.reject(new Error(`status ${res.status}`))))
       .then((real) => {
-        if (!cancelled && real.status === "ready") setData(real);
+        if (!cancelled && (real.status === "ready" || real.status === "final")) setData(real);
       })
       .catch(() => {
         // No backend reachable (e.g. the deployed site) -- use the real

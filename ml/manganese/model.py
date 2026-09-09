@@ -72,6 +72,8 @@ def train_and_save_model(csv_path='final_flattened_training_data.csv'):
       'grade_model': grade_model,
       'tonnage_model': tonnage_model,
       'feature_names': list(X.columns),
+      'val_r2_grade': float(r2_score(g_val, g_preds)),
+      'val_r2_tonnage': float(r2_score(t_val, t_preds)),
   }
   joblib.dump(model_bundle, 'manganese_xgboost_models.pkl')
   print(

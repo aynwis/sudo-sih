@@ -1,38 +1,37 @@
 import { useEffect, useState } from "react";
-import { mockProbabilityImageUrl } from "../lib/mockData";
+import { mockProbabilityImageUrl, TILE02_BOUNDS } from "../lib/mockData";
 
-async function fetchProbabilityImage(url) {
-  const res = await fetch(url);
+async function fetchProbabilityImage(tileId) {
+  const res = await fetch(`/api/v1/raster/${tileId}`);
   if (!res.ok) throw new Error(`Raster fetch failed: ${res.status}`);
-  const blob = await res.blob();
-  return URL.createObjectURL(blob);
+  const body = await res.json(); // Ayaan's RasterResponse
+  return {
+    url: `data:image/png;base64,${body.image_base64}`,
+    bounds: body.bounds,
+  };
 }
 
-export function useProbabilityImage(endpointUrl) {
-  const [state, setState] = useState({ status: "loading", url: null, error: null });
+export function useProbabilityImage(tileId = "tile02_jamunjhola") {
+  const [state, setState] = useState({ status: "loading", url: null, bounds: null, error: null });
 
   useEffect(() => {
-    let objectUrl = null;
     let cancelled = false;
 
-    fetchProbabilityImage(endpointUrl)
-      .then((url) => {
-        if (cancelled) return;
-        objectUrl = url;
-        setState({ status: "success", url, error: null });
+    fetchProbabilityImage(tileId)
+      .then(({ url, bounds }) => {
+        if (!cancelled) setState({ status: "success", url, bounds, error: null });
       })
       .catch(() => {
         // Ayaan's raster endpoint isn't up yet -- fall back to the mock
         // gradient so the heatmap still renders. Remove this fallback once
-        // Day 4's real endpoint is live.
-        if (!cancelled) setState({ status: "success", url: mockProbabilityImageUrl(), error: null });
+        // his endpoint is live.
+        if (!cancelled) setState({ status: "success", url: mockProbabilityImageUrl(), bounds: TILE02_BOUNDS, error: null });
       });
 
     return () => {
       cancelled = true;
-      if (objectUrl) URL.revokeObjectURL(objectUrl);
     };
-  }, [endpointUrl]);
+  }, [tileId]);
 
   return state;
 }

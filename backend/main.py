@@ -60,13 +60,27 @@ def compute_regression_estimate():
     g_preds = grade_model.predict(X_val)
     t_preds = tonnage_model.predict(X_val)
 
+    grade_r2 = round(float(r2_score(g_val, g_preds)), 4)
+    tonnage_r2 = round(float(r2_score(t_val, t_preds)), 4)
+    mean_grade_pct = round(float(g_preds.mean()), 2)
+    mean_tonnage_mt = round(float(t_preds.mean()), 2)
+
     return {
-        "status": "ready",
-        "gradeR2": round(float(r2_score(g_val, g_preds)), 4),
-        "tonnageR2": round(float(r2_score(t_val, t_preds)), 4),
-        "meanGradePct": round(float(g_preds.mean()), 2),
-        "meanTonnageMt": round(float(t_preds.mean()), 2),
+        "status": "final",
+        "gradeR2": grade_r2,
+        "tonnageR2": tonnage_r2,
+        "meanGradePct": mean_grade_pct,
+        "meanTonnageMt": mean_tonnage_mt,
         "regressionReadySites": int(len(X_val)),
+
+        # Aliases -- match Syed's/Dharti's guide field names so their
+        # code parses this response as written. Same numbers, old keys.
+        # n_training_points is deliberately omitted rather than aliased
+        # to regressionReadySites (209715 pixels reads as a nonsensical
+        # "training points" count on Dharti's card).
+        "predicted_grade_pct": mean_grade_pct,
+        "confidence_interval_pct": None,
+        "method": "XGBoost regression (grade + tonnage), full-tile",
     }
 
 
