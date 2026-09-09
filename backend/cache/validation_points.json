@@ -1,0 +1,2084 @@
+{
+  "count": 231,
+  "sites": [
+    {
+      "site_id": "Peli",
+      "cluster_id": "GT-0089",
+      "lat": 21.86614,
+      "lon": 80.26701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Adilabad",
+      "cluster_id": "GT-0137",
+      "lat": 22.88286,
+      "lon": 79.61656,
+      "precision_flag": "mine_level",
+      "state": "",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Amatola",
+      "cluster_id": "GT-0071",
+      "lat": 21.76615,
+      "lon": 80.11701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Banjari",
+      "cluster_id": "GT-0092",
+      "lat": 21.8828,
+      "lon": 80.31701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Banjartola",
+      "cluster_id": "GT-0109",
+      "lat": 21.95779,
+      "lon": 80.27534,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Barbaspur",
+      "cluster_id": "GT-0073",
+      "lat": 21.79947,
+      "lon": 80.10867,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Bharweli",
+      "cluster_id": "GT-0077",
+      "lat": 21.81614,
+      "lon": 80.18367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Bharweli",
+      "cluster_id": "GT-0078",
+      "lat": 21.8328,
+      "lon": 80.23367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Bijora",
+      "cluster_id": "GT-0112",
+      "lat": 21.97446,
+      "lon": 80.38367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Birsola",
+      "cluster_id": "GT-0086",
+      "lat": 21.87447,
+      "lon": 80.11701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Cavarem",
+      "cluster_id": "GT-0019",
+      "lat": 15.1251,
+      "lon": 74.14215,
+      "precision_flag": "mine_level",
+      "state": "",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Chiklajhori",
+      "cluster_id": "GT-0106",
+      "lat": 21.94946,
+      "lon": 80.40033,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Dhapewata",
+      "cluster_id": "GT-0094",
+      "lat": 21.89114,
+      "lon": 80.19201,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Dongargaon",
+      "cluster_id": "GT-0065",
+      "lat": 21.71615,
+      "lon": 80.08367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Enkatola",
+      "cluster_id": "GT-0049",
+      "lat": 21.36618,
+      "lon": 80.16701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Garbham",
+      "cluster_id": "GT-0028",
+      "lat": 16.60541,
+      "lon": 79.58501,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Ghondi",
+      "cluster_id": "GT-0100",
+      "lat": 21.91613,
+      "lon": 80.417,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Gongalpara",
+      "cluster_id": "GT-0096",
+      "lat": 21.89946,
+      "lon": 80.30034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Gulla Hurki",
+      "cluster_id": "GT-0091",
+      "lat": 21.87864,
+      "lon": 79.99202,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Hirapur",
+      "cluster_id": "GT-0082",
+      "lat": 21.84947,
+      "lon": 80.24201,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Jaitpuri",
+      "cluster_id": "GT-0125",
+      "lat": 22.01612,
+      "lon": 80.36701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kajlidongri",
+      "cluster_id": "GT-0138",
+      "lat": 22.94939,
+      "lon": 74.51716,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kanatola",
+      "cluster_id": "GT-0090",
+      "lat": 21.87447,
+      "lon": 80.35034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Katangi",
+      "cluster_id": "GT-0069",
+      "lat": 21.76615,
+      "lon": 79.80035,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kera",
+      "cluster_id": "GT-0066",
+      "lat": 21.74948,
+      "lon": 80.11701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kokma",
+      "cluster_id": "GT-0116",
+      "lat": 21.98279,
+      "lon": 80.26701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kosmi",
+      "cluster_id": "GT-0075",
+      "lat": 21.79947,
+      "lon": 80.20867,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kurthitola",
+      "cluster_id": "GT-0103",
+      "lat": 21.94946,
+      "lon": 80.25034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Laugur",
+      "cluster_id": "GT-0102",
+      "lat": 21.93279,
+      "lon": 80.35034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Netravli",
+      "cluster_id": "GT-0017",
+      "lat": 15.08899,
+      "lon": 74.20881,
+      "precision_flag": "mine_level",
+      "state": "",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Nishkal",
+      "cluster_id": "GT-0037",
+      "lat": 19.21637,
+      "lon": 83.21693,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Piparia",
+      "cluster_id": "GT-0068",
+      "lat": 21.74948,
+      "lon": 80.16701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Polwatur",
+      "cluster_id": "GT-0122",
+      "lat": 21.99947,
+      "lon": 80.29201,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Rajpur",
+      "cluster_id": "GT-0117",
+      "lat": 21.98279,
+      "lon": 80.36701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Salgini",
+      "cluster_id": "GT-0012",
+      "lat": 15.00844,
+      "lon": 74.25048,
+      "precision_flag": "mine_level",
+      "state": "Goa",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Samnapur",
+      "cluster_id": "GT-0114",
+      "lat": 21.96613,
+      "lon": 80.48366,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Sandur",
+      "cluster_id": "GT-0010",
+      "lat": 14.68706,
+      "lon": 76.1853,
+      "precision_flag": "mine_level",
+      "state": "Karnataka",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Sanguem",
+      "cluster_id": "GT-0025",
+      "lat": 15.22509,
+      "lon": 74.16715,
+      "precision_flag": "mine_level",
+      "state": "Goa",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Singhbhum",
+      "cluster_id": "GT-0142",
+      "lat": 23.79167,
+      "lon": 87.99351,
+      "precision_flag": "mine_level",
+      "state": "West Bengal",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Sonawani",
+      "cluster_id": "GT-0090",
+      "lat": 21.86614,
+      "lon": 80.35034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Titwa",
+      "cluster_id": "GT-0121",
+      "lat": 21.99529,
+      "lon": 80.13367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Verlem",
+      "cluster_id": "GT-0013",
+      "lat": 15.0501,
+      "lon": 74.25048,
+      "precision_flag": "mine_level",
+      "state": "Goa",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Viliena",
+      "cluster_id": "GT-0022",
+      "lat": 15.16676,
+      "lon": 74.25048,
+      "precision_flag": "mine_level",
+      "state": "Goa",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Waraseoni",
+      "cluster_id": "GT-0070",
+      "lat": 21.76615,
+      "lon": 80.04201,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Balaghat Mine",
+      "cluster_id": "GT-0137",
+      "lat": 22.88286,
+      "lon": 79.61656,
+      "precision_flag": "mine_level",
+      "state": "",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Bhutuda Mine",
+      "cluster_id": "GT-0039",
+      "lat": 20.56599,
+      "lon": 84.50478,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Dalapahar Mine",
+      "cluster_id": "GT-0039",
+      "lat": 20.56599,
+      "lon": 84.50478,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Gurda Mine",
+      "cluster_id": "GT-0039",
+      "lat": 20.56599,
+      "lon": 84.50478,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Siljora Mine",
+      "cluster_id": "GT-0039",
+      "lat": 20.56599,
+      "lon": 84.50478,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Balapur/Hamesha",
+      "cluster_id": "GT-0062",
+      "lat": 21.5495,
+      "lon": 79.70035,
+      "precision_flag": "mine_level",
+      "state": "",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Orissa Deposits",
+      "cluster_id": "GT-0063",
+      "lat": 21.63281,
+      "lon": 85.66686,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Hirmutola",
+      "cluster_id": "GT-0115",
+      "lat": 21.98279,
+      "lon": 80.13367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Jamunjhola",
+      "cluster_id": "GT-0099",
+      "lat": 21.92168,
+      "lon": 80.23784,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Agarware",
+      "cluster_id": "GT-0088",
+      "lat": 21.87447,
+      "lon": 80.20867,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Baihar",
+      "cluster_id": "GT-0128",
+      "lat": 22.04945,
+      "lon": 80.567,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Behrai",
+      "cluster_id": "GT-0081",
+      "lat": 21.84947,
+      "lon": 80.13367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Bijora",
+      "cluster_id": "GT-0112",
+      "lat": 21.97446,
+      "lon": 80.38367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Chatera",
+      "cluster_id": "GT-0087",
+      "lat": 21.86614,
+      "lon": 80.13367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Dhapera",
+      "cluster_id": "GT-0093",
+      "lat": 21.89114,
+      "lon": 80.16284,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Ekodi",
+      "cluster_id": "GT-0072",
+      "lat": 21.79114,
+      "lon": 80.14201,
+      "precision_flag": "mine_level",
+      "state": "",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Gaonajhola",
+      "cluster_id": "GT-0124",
+      "lat": 22.00778,
+      "lon": 80.36701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Garra",
+      "cluster_id": "GT-0074",
+      "lat": 21.79947,
+      "lon": 80.15034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kategaon",
+      "cluster_id": "GT-0119",
+      "lat": 21.99113,
+      "lon": 80.15867,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Khara",
+      "cluster_id": "GT-0111",
+      "lat": 21.96613,
+      "lon": 80.26701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kot Pahar",
+      "cluster_id": "GT-0095",
+      "lat": 21.89114,
+      "lon": 80.40866,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Manegaon",
+      "cluster_id": "GT-0083",
+      "lat": 21.84947,
+      "lon": 80.25034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Pindkapar",
+      "cluster_id": "GT-0118",
+      "lat": 21.98279,
+      "lon": 80.43366,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Pipartola",
+      "cluster_id": "GT-0088",
+      "lat": 21.87447,
+      "lon": 80.20867,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Salpa",
+      "cluster_id": "GT-0123",
+      "lat": 21.99947,
+      "lon": 80.35034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Samnapur R.S",
+      "cluster_id": "GT-0090",
+      "lat": 21.86614,
+      "lon": 80.35034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Sonpuri",
+      "cluster_id": "GT-0107",
+      "lat": 21.94946,
+      "lon": 80.467,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Talabori",
+      "cluster_id": "GT-0105",
+      "lat": 21.94946,
+      "lon": 80.31701,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Umardaoni",
+      "cluster_id": "GT-0101",
+      "lat": 21.92724,
+      "lon": 80.23367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Ramrama",
+      "cluster_id": "GT-0085",
+      "lat": 21.85503,
+      "lon": 79.94202,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Rivona",
+      "cluster_id": "GT-0021",
+      "lat": 15.16676,
+      "lon": 74.10881,
+      "precision_flag": "mine_level",
+      "state": "Goa",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Naveli",
+      "cluster_id": "GT-0020",
+      "lat": 15.13343,
+      "lon": 74.16715,
+      "precision_flag": "mine_level",
+      "state": "Goa",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Ukwa",
+      "cluster_id": "GT-0113",
+      "lat": 21.96613,
+      "lon": 80.467,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Thakurani Mine",
+      "cluster_id": "GT-0039",
+      "lat": 20.56599,
+      "lon": 84.50478,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Chorbaoli-Muknapur Manganese Ore",
+      "cluster_id": "GT-0060",
+      "lat": 21.4795,
+      "lon": 79.31036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Lohdongri Deposit",
+      "cluster_id": "GT-0044",
+      "lat": 21.32952,
+      "lon": 79.36036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Rungta:S Mine",
+      "cluster_id": "GT-0052",
+      "lat": 21.39951,
+      "lon": 79.45036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Goguldoho Mines: Western and East",
+      "cluster_id": "GT-0056",
+      "lat": 21.40951,
+      "lon": 79.43036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Laugur Mine",
+      "cluster_id": "GT-0102",
+      "lat": 21.92946,
+      "lon": 80.35034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Tirodi",
+      "cluster_id": "GT-0064",
+      "lat": 21.68278,
+      "lon": 79.75035,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Keonjhar Mn Deposits",
+      "cluster_id": "GT-0127",
+      "lat": 22.02944,
+      "lon": 85.4102,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kajlidongri Mine",
+      "cluster_id": "GT-0134",
+      "lat": 22.49943,
+      "lon": 73.33382,
+      "precision_flag": "mine_level",
+      "state": "Rajasthan",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kanavehalli Group Deposits",
+      "cluster_id": "GT-0016",
+      "lat": 15.0801,
+      "lon": 76.55042,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Sandur Mines",
+      "cluster_id": "GT-0008",
+      "lat": 14.41686,
+      "lon": 79.60034,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Chaibasa Area",
+      "cluster_id": "GT-0136",
+      "lat": 22.5494,
+      "lon": 85.81019,
+      "precision_flag": "mine_level",
+      "state": "Bihar",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Tambesra,Udaipur and Banswara",
+      "cluster_id": "GT-0140",
+      "lat": 23.49934,
+      "lon": 74.2505,
+      "precision_flag": "mine_level",
+      "state": "Rajasthan",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kalaparbat Mine",
+      "cluster_id": "GT-0131",
+      "lat": 22.29942,
+      "lon": 85.3002,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Maharashtra-Madya Pradesh Area",
+      "cluster_id": "GT-0108",
+      "lat": 21.95506,
+      "lon": 80.05034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Manegaon Mines",
+      "cluster_id": "GT-0079",
+      "lat": 21.82947,
+      "lon": 80.26034,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Balapur Hamesha Mine",
+      "cluster_id": "GT-0041",
+      "lat": 20.80957,
+      "lon": 76.60043,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Beldongri",
+      "cluster_id": "GT-0048",
+      "lat": 21.34951,
+      "lon": 79.30036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Jamda-Koira Valley",
+      "cluster_id": "GT-0097",
+      "lat": 21.89946,
+      "lon": 85.25021,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kansa",
+      "cluster_id": "GT-0042",
+      "lat": 20.82955,
+      "lon": 86.33018,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Satak Mine and Satak Extension Mi",
+      "cluster_id": "GT-0046",
+      "lat": 21.34951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Ukwa",
+      "cluster_id": "GT-0110",
+      "lat": 21.95946,
+      "lon": 80.46033,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kandri Mine",
+      "cluster_id": "GT-0054",
+      "lat": 21.40951,
+      "lon": 79.28036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Janapalacheruvu Deposit",
+      "cluster_id": "GT-0026",
+      "lat": 15.46006,
+      "lon": 79.15035,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Gumgaon",
+      "cluster_id": "GT-0050",
+      "lat": 21.39951,
+      "lon": 78.98367,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Junewani Mines Area:  Junewani Mi",
+      "cluster_id": "GT-0059",
+      "lat": 21.4795,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Bisgod",
+      "cluster_id": "GT-0014",
+      "lat": 15.0501,
+      "lon": 74.58487,
+      "precision_flag": "mine_level",
+      "state": "",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Bhandarbori Mine",
+      "cluster_id": "GT-0052",
+      "lat": 21.39951,
+      "lon": 79.45036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kumaraswami",
+      "cluster_id": "GT-0016",
+      "lat": 15.0801,
+      "lon": 76.55042,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Jagantola and Ghondi Mines",
+      "cluster_id": "GT-0104",
+      "lat": 21.94946,
+      "lon": 80.26034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Barbil",
+      "cluster_id": "GT-0130",
+      "lat": 22.11614,
+      "lon": 85.3502,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kuttinga",
+      "cluster_id": "GT-0036",
+      "lat": 19.1664,
+      "lon": 83.46695,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Salai-Ghoti Belt",
+      "cluster_id": "GT-0061",
+      "lat": 21.5095,
+      "lon": 79.43036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Shivrajpur Syndicate Concessions",
+      "cluster_id": "GT-0132",
+      "lat": 22.39944,
+      "lon": 73.65051,
+      "precision_flag": "mine_level",
+      "state": "Gujarat",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Barbill Mine",
+      "cluster_id": "GT-0130",
+      "lat": 22.11614,
+      "lon": 85.3502,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Mudda Mines",
+      "cluster_id": "GT-0058",
+      "lat": 21.4595,
+      "lon": 79.41036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Sivarajpur Mine",
+      "cluster_id": "GT-0134",
+      "lat": 22.49943,
+      "lon": 73.33382,
+      "precision_flag": "mine_level",
+      "state": "Rajasthan",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kuttinga",
+      "cluster_id": "GT-0036",
+      "lat": 19.1664,
+      "lon": 83.46695,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Mandri Mine",
+      "cluster_id": "GT-0055",
+      "lat": 21.40951,
+      "lon": 79.40036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Maharashtra/Mahya Pradesh Area",
+      "cluster_id": "GT-0120",
+      "lat": 21.99947,
+      "lon": 79.00038,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kulti-Raniganj",
+      "cluster_id": "GT-0141",
+      "lat": 23.7493,
+      "lon": 86.86016,
+      "precision_flag": "mine_level",
+      "state": "West Bengal",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Waregaon Deposit",
+      "cluster_id": "GT-0045",
+      "lat": 21.32952,
+      "lon": 79.41036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Joida Mn Deposits: Nagari, Chipol",
+      "cluster_id": "GT-0024",
+      "lat": 15.21009,
+      "lon": 74.50047,
+      "precision_flag": "mine_level",
+      "state": "Karnataka",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Ramandrug Group Deposits",
+      "cluster_id": "GT-0016",
+      "lat": 15.0801,
+      "lon": 76.55042,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Mansar",
+      "cluster_id": "GT-0051",
+      "lat": 21.39951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Kodur, Garbham, and Perapi Mines",
+      "cluster_id": "GT-0030",
+      "lat": 18.27479,
+      "lon": 83.55025,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Madhya Pradesh and Maharashtra States",
+      "cluster_id": "GT-0080",
+      "lat": 21.83277,
+      "lon": 80.30034,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh, Maharashtra",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Orissa State",
+      "cluster_id": "GT-0063",
+      "lat": 21.63278,
+      "lon": 85.66689,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Karnataka State (Mysore State)",
+      "cluster_id": "GT-0004",
+      "lat": 13.93351,
+      "lon": 75.51714,
+      "precision_flag": "mine_level",
+      "state": "Karnataka",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Gujarat State",
+      "cluster_id": "GT-0139",
+      "lat": 22.9994,
+      "lon": 72.50054,
+      "precision_flag": "mine_level",
+      "state": "Gujarat",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Andhra Pradesh State",
+      "cluster_id": "GT-0033",
+      "lat": 18.36648,
+      "lon": 83.45025,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Goa State",
+      "cluster_id": "GT-0027",
+      "lat": 15.50006,
+      "lon": 73.91718,
+      "precision_flag": "mine_level",
+      "state": "Goa",
+      "source": "USGS_MRDS"
+    },
+    {
+      "site_id": "Balaghat Mine",
+      "cluster_id": "GT-0077",
+      "lat": 21.81614,
+      "lon": 80.18367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Balaghat Mine",
+      "cluster_id": "GT-0077",
+      "lat": 21.81614,
+      "lon": 80.18367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Beldongri Mine",
+      "cluster_id": "GT-0048",
+      "lat": 21.34951,
+      "lon": 79.30036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Beldongri Mine",
+      "cluster_id": "GT-0048",
+      "lat": 21.34951,
+      "lon": 79.30036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "New Satak Mine",
+      "cluster_id": "GT-0046",
+      "lat": 21.34951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Old Satak Mine",
+      "cluster_id": "GT-0046",
+      "lat": 21.34951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Chikla Mine",
+      "cluster_id": "GT-0053",
+      "lat": 21.4,
+      "lon": 79.75,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Dongri Buzurg Mine",
+      "cluster_id": "GT-0057",
+      "lat": 21.45,
+      "lon": 79.8,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Gumgaon Mine",
+      "cluster_id": "GT-0050",
+      "lat": 21.39951,
+      "lon": 78.98367,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Munsar Mine",
+      "cluster_id": "GT-0051",
+      "lat": 21.39951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Munsar Mine",
+      "cluster_id": "GT-0051",
+      "lat": 21.39951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Munsar Mine",
+      "cluster_id": "GT-0051",
+      "lat": 21.39951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Munsar Mine",
+      "cluster_id": "GT-0051",
+      "lat": 21.39951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Parsoda Mine",
+      "cluster_id": "GT-0047",
+      "lat": 21.35,
+      "lon": 79.27,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Kandri Mine",
+      "cluster_id": "GT-0054",
+      "lat": 21.40951,
+      "lon": 79.28036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Sitapatore Mine",
+      "cluster_id": "GT-0067",
+      "lat": 21.75,
+      "lon": 80.15,
+      "precision_flag": "block_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Sitapatore-Sukli",
+      "cluster_id": "GT-0067",
+      "lat": 21.75,
+      "lon": 80.15,
+      "precision_flag": "block_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Tirodi Mine",
+      "cluster_id": "GT-0064",
+      "lat": 21.68278,
+      "lon": 79.75035,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Ukwa Mine",
+      "cluster_id": "GT-0113",
+      "lat": 21.96613,
+      "lon": 80.467,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Ukwa Mine",
+      "cluster_id": "GT-0113",
+      "lat": 21.96613,
+      "lon": 80.467,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Garbham Manganese Mine",
+      "cluster_id": "GT-0030",
+      "lat": 18.27479,
+      "lon": 83.55025,
+      "precision_flag": "mine_level",
+      "state": "Andhra Pradesh",
+      "source": "MOIL_2024_IMYB"
+    },
+    {
+      "site_id": "Ukwa Mine (grade range)",
+      "cluster_id": "GT-0113",
+      "lat": 21.96613,
+      "lon": 80.467,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2017_Workshop"
+    },
+    {
+      "site_id": "Balaghat Mine (grade range)",
+      "cluster_id": "GT-0077",
+      "lat": 21.81614,
+      "lon": 80.18367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2017_Workshop"
+    },
+    {
+      "site_id": "Tirodi Mine (grade range)",
+      "cluster_id": "GT-0064",
+      "lat": 21.68278,
+      "lon": 79.75035,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_2017_Workshop"
+    },
+    {
+      "site_id": "Gumgaon Mine (grade range)",
+      "cluster_id": "GT-0050",
+      "lat": 21.39951,
+      "lon": 78.98367,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2017_Workshop"
+    },
+    {
+      "site_id": "Kandri Mine (grade range)",
+      "cluster_id": "GT-0054",
+      "lat": 21.40951,
+      "lon": 79.28036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2017_Workshop"
+    },
+    {
+      "site_id": "Chikla Mine (grade range)",
+      "cluster_id": "GT-0053",
+      "lat": 21.4,
+      "lon": 79.75,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2017_Workshop"
+    },
+    {
+      "site_id": "Dongri Buzurg Mine (grade range)",
+      "cluster_id": "GT-0057",
+      "lat": 21.45,
+      "lon": 79.8,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "MOIL_2017_Workshop"
+    },
+    {
+      "site_id": "Sandur ML-2678 Ramanadurg & Swamimalai",
+      "cluster_id": "GT-0015",
+      "lat": 15.05,
+      "lon": 76.55,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "SMIORE_2017"
+    },
+    {
+      "site_id": "Sandur ML-2679",
+      "cluster_id": "GT-0015",
+      "lat": 15.05,
+      "lon": 76.55,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "SMIORE_2017"
+    },
+    {
+      "site_id": "Sandur ML-2678 (updated)",
+      "cluster_id": "GT-0015",
+      "lat": 15.05,
+      "lon": 76.55,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "SMIORE_2024"
+    },
+    {
+      "site_id": "Joda West Iron & Mn Mine",
+      "cluster_id": "GT-0126",
+      "lat": 22.01612,
+      "lon": 85.3502,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "TATA_SDF_2021"
+    },
+    {
+      "site_id": "Bamebari Iron & Mn Mine",
+      "cluster_id": "GT-0129",
+      "lat": 22.05,
+      "lon": 85.43,
+      "precision_flag": "block_level",
+      "state": "Odisha",
+      "source": "TATA_SDF_2025_Bamebari"
+    },
+    {
+      "site_id": "Tiringpahar Iron & Mn Mine",
+      "cluster_id": "GT-0126",
+      "lat": 22.01612,
+      "lon": 85.35,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "TATA_SDF_2022_Tiringpahar"
+    },
+    {
+      "site_id": "Bamebari Expansion Blocks",
+      "cluster_id": "GT-0129",
+      "lat": 22.05,
+      "lon": 85.43,
+      "precision_flag": "block_level",
+      "state": "Odisha",
+      "source": "TATA_EC_Bamebari"
+    },
+    {
+      "site_id": "Khondbond Iron & Mn Mine",
+      "cluster_id": "GT-0097",
+      "lat": 21.89946,
+      "lon": 85.25021,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "TATA_Khondbond"
+    },
+    {
+      "site_id": "Devada North Block",
+      "cluster_id": "GT-0035",
+      "lat": 18.5,
+      "lon": 83.5,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G2_2017-18"
+    },
+    {
+      "site_id": "Devada South Block",
+      "cluster_id": "GT-0035",
+      "lat": 18.5,
+      "lon": 83.5,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G2_2017-18"
+    },
+    {
+      "site_id": "Jaggarajupeta East Sector",
+      "cluster_id": "GT-0031",
+      "lat": 18.3,
+      "lon": 83.4,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G3_2020-21"
+    },
+    {
+      "site_id": "Jaggarajupeta West Sector",
+      "cluster_id": "GT-0031",
+      "lat": 18.3,
+      "lon": 83.4,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G3_2020-21"
+    },
+    {
+      "site_id": "Garraju-Cheepurupalli Block X-sec",
+      "cluster_id": "GT-0034",
+      "lat": 18.4,
+      "lon": 83.8,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G2_2022-23"
+    },
+    {
+      "site_id": "Garraju-Cheepurupalli Block LV",
+      "cluster_id": "GT-0034",
+      "lat": 18.4,
+      "lon": 83.8,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G2_2022-23"
+    },
+    {
+      "site_id": "Laxmipuram Block X-sec",
+      "cluster_id": "GT-0029",
+      "lat": 18.2,
+      "lon": 83.6,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G3_2021-22"
+    },
+    {
+      "site_id": "Laxmipuram Block LV",
+      "cluster_id": "GT-0029",
+      "lat": 18.2,
+      "lon": 83.6,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G3_2021-22"
+    },
+    {
+      "site_id": "Gadabavalasa Block",
+      "cluster_id": "GT-0032",
+      "lat": 18.3,
+      "lon": 83.5,
+      "precision_flag": "block_level",
+      "state": "Andhra Pradesh",
+      "source": "GSI_G2_2023-24"
+    },
+    {
+      "site_id": "Karampada East Mn Ore",
+      "cluster_id": "GT-0131",
+      "lat": 22.3,
+      "lon": 85.3,
+      "precision_flag": "block_level",
+      "state": "Jharkhand",
+      "source": "GSI_G3_2019-20"
+    },
+    {
+      "site_id": "Karampada East high-grade",
+      "cluster_id": "GT-0131",
+      "lat": 22.3,
+      "lon": 85.3,
+      "precision_flag": "block_level",
+      "state": "Jharkhand",
+      "source": "GSI_G3_2019-20"
+    },
+    {
+      "site_id": "Tatiba Block Mn",
+      "cluster_id": "GT-0135",
+      "lat": 22.5,
+      "lon": 85.5,
+      "precision_flag": "block_level",
+      "state": "Jharkhand",
+      "source": "GSI_G2_2022-23"
+    },
+    {
+      "site_id": "Khasjamdav Block Mn",
+      "cluster_id": "GT-0133",
+      "lat": 22.4,
+      "lon": 85.6,
+      "precision_flag": "block_level",
+      "state": "Jharkhand",
+      "source": "GSI_G3_2023-24"
+    },
+    {
+      "site_id": "Orahuri Block 10% cut",
+      "cluster_id": "GT-0076",
+      "lat": 21.8,
+      "lon": 85.4,
+      "precision_flag": "block_level",
+      "state": "Odisha",
+      "source": "GSI_G2_Odisha"
+    },
+    {
+      "site_id": "Orahuri Block 25% cut",
+      "cluster_id": "GT-0076",
+      "lat": 21.8,
+      "lon": 85.4,
+      "precision_flag": "block_level",
+      "state": "Odisha",
+      "source": "GSI_G2_Odisha"
+    },
+    {
+      "site_id": "Banjkusum Block",
+      "cluster_id": "GT-0098",
+      "lat": 21.9,
+      "lon": 85.5,
+      "precision_flag": "block_level",
+      "state": "Odisha",
+      "source": "GSI_G2_Odisha"
+    },
+    {
+      "site_id": "Kusumdihi Block",
+      "cluster_id": "GT-0084",
+      "lat": 21.85,
+      "lon": 85.45,
+      "precision_flag": "block_level",
+      "state": "Odisha",
+      "source": "GSI_G2_Odisha"
+    },
+    {
+      "site_id": "Rengali Block Bolangir",
+      "cluster_id": "GT-0040",
+      "lat": 20.8,
+      "lon": 83.6,
+      "precision_flag": "block_level",
+      "state": "Odisha",
+      "source": "GSI_G2_Odisha"
+    },
+    {
+      "site_id": "Tamiya Patangarh Block",
+      "cluster_id": "GT-0043",
+      "lat": 20.9,
+      "lon": 83.7,
+      "precision_flag": "block_level",
+      "state": "Odisha",
+      "source": "GSI_G2_Odisha"
+    },
+    {
+      "site_id": "Parseoni Block",
+      "cluster_id": "GT-0060",
+      "lat": 21.4795,
+      "lon": 79.31036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "GSI_G2_Odisha"
+    },
+    {
+      "site_id": "Pimperkunta Block Both bands",
+      "cluster_id": "GT-0038",
+      "lat": 19.5,
+      "lon": 78.5,
+      "precision_flag": "block_level",
+      "state": "Telangana",
+      "source": "GSI_G4_Telangana"
+    },
+    {
+      "site_id": "Baraiburu-Tatiba Iron & Manganese Ore Block",
+      "cluster_id": "GT-0135",
+      "lat": 22.5,
+      "lon": 85.5,
+      "precision_flag": "block_level",
+      "state": "Jharkhand",
+      "source": "IBM_Auction_2023"
+    },
+    {
+      "site_id": "Chitradurga Halekal/Bhahaddurghatta Belt",
+      "cluster_id": "GT-0007",
+      "lat": 14.23,
+      "lon": 76.4,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "GSI_1981_via_2021"
+    },
+    {
+      "site_id": "Chitradurga Tumkur",
+      "cluster_id": "GT-0000",
+      "lat": 13.34,
+      "lon": 77.1,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "GSI_1981_via_2021"
+    },
+    {
+      "site_id": "Sandur Deogiri Block geochem",
+      "cluster_id": "GT-0010",
+      "lat": 14.68706,
+      "lon": 76.1853,
+      "precision_flag": "mine_level",
+      "state": "Karnataka",
+      "source": "IJERT_2014"
+    },
+    {
+      "site_id": "Sandur SB Halli Block geochem",
+      "cluster_id": "GT-0010",
+      "lat": 14.68706,
+      "lon": 76.1853,
+      "precision_flag": "mine_level",
+      "state": "Karnataka",
+      "source": "IJERT_2014"
+    },
+    {
+      "site_id": "Kutinga Deposit Rayagada",
+      "cluster_id": "GT-0036",
+      "lat": 19.1664,
+      "lon": 83.46695,
+      "precision_flag": "mine_level",
+      "state": "Odisha",
+      "source": "JGSI_1994"
+    },
+    {
+      "site_id": "Shivrajpur Pani Gujarat JV",
+      "cluster_id": "GT-0132",
+      "lat": 22.39944,
+      "lon": 73.65051,
+      "precision_flag": "mine_level",
+      "state": "Gujarat",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Bharveli Mine",
+      "cluster_id": "GT-0077",
+      "lat": 21.81614,
+      "lon": 80.18367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Ukwa Mine",
+      "cluster_id": "GT-0113",
+      "lat": 21.96613,
+      "lon": 80.467,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Tirodi Mine",
+      "cluster_id": "GT-0064",
+      "lat": 21.68278,
+      "lon": 79.75035,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Dongri Buzurg Mine",
+      "cluster_id": "GT-0057",
+      "lat": 21.45,
+      "lon": 79.8,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Chikla Mine",
+      "cluster_id": "GT-0053",
+      "lat": 21.4,
+      "lon": 79.75,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Gumgaon Mine",
+      "cluster_id": "GT-0050",
+      "lat": 21.39951,
+      "lon": 78.98367,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Kandri Mine",
+      "cluster_id": "GT-0054",
+      "lat": 21.40951,
+      "lon": 79.28036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Mansar Mine",
+      "cluster_id": "GT-0051",
+      "lat": 21.39951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2012"
+    },
+    {
+      "site_id": "Bharveli Mine",
+      "cluster_id": "GT-0077",
+      "lat": 21.81614,
+      "lon": 80.18367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Ukwa Mine",
+      "cluster_id": "GT-0113",
+      "lat": 21.96613,
+      "lon": 80.467,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Tirodi Mine",
+      "cluster_id": "GT-0064",
+      "lat": 21.68278,
+      "lon": 79.75035,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Dongri Buzurg Mine",
+      "cluster_id": "GT-0057",
+      "lat": 21.45,
+      "lon": 79.8,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Chikla Mine",
+      "cluster_id": "GT-0053",
+      "lat": 21.4,
+      "lon": 79.75,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Gumgaon Mine",
+      "cluster_id": "GT-0050",
+      "lat": 21.39951,
+      "lon": 78.98367,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Kandri Mine",
+      "cluster_id": "GT-0054",
+      "lat": 21.40951,
+      "lon": 79.28036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Mansar Mine",
+      "cluster_id": "GT-0051",
+      "lat": 21.39951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Beldongri Mine",
+      "cluster_id": "GT-0048",
+      "lat": 21.34951,
+      "lon": 79.30036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "IBM_IMYB_2014"
+    },
+    {
+      "site_id": "Balaghat Mine",
+      "cluster_id": "GT-0077",
+      "lat": 21.81614,
+      "lon": 80.18367,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Beldongri Mine",
+      "cluster_id": "GT-0048",
+      "lat": 21.34951,
+      "lon": 79.30036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Chikla Mine",
+      "cluster_id": "GT-0053",
+      "lat": 21.4,
+      "lon": 79.75,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Kandri Mine",
+      "cluster_id": "GT-0054",
+      "lat": 21.40951,
+      "lon": 79.28036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Munsar Mine",
+      "cluster_id": "GT-0051",
+      "lat": 21.39951,
+      "lon": 79.26036,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Tirodi Mine",
+      "cluster_id": "GT-0064",
+      "lat": 21.68278,
+      "lon": 79.75035,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Ukwa Mine",
+      "cluster_id": "GT-0113",
+      "lat": 21.96613,
+      "lon": 80.467,
+      "precision_flag": "mine_level",
+      "state": "Madhya Pradesh",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Gumgaon Mine",
+      "cluster_id": "GT-0050",
+      "lat": 21.39951,
+      "lon": 78.98367,
+      "precision_flag": "mine_level",
+      "state": "Maharashtra",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Dongri Buzurg Mine",
+      "cluster_id": "GT-0057",
+      "lat": 21.45,
+      "lon": 79.8,
+      "precision_flag": "block_level",
+      "state": "Maharashtra",
+      "source": "MOIL_Profile_2023"
+    },
+    {
+      "site_id": "Bahadurgatta Manganese Mine ML1584",
+      "cluster_id": "GT-0007",
+      "lat": 14.23,
+      "lon": 76.4,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2019"
+    },
+    {
+      "site_id": "Hullikate Manganese Mine ML2571",
+      "cluster_id": "GT-0009",
+      "lat": 14.5,
+      "lon": 75.9,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2019"
+    },
+    {
+      "site_id": "Karekurchi Iron & Manganese Ore Mine ML2028",
+      "cluster_id": "GT-0003",
+      "lat": 13.6,
+      "lon": 77.0,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2020"
+    },
+    {
+      "site_id": "Kudre Kanive Kaval Mn Mine ML2659",
+      "cluster_id": "GT-0006",
+      "lat": 14.1,
+      "lon": 76.5,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2020"
+    },
+    {
+      "site_id": "Shivsandra Manganese Ore Mine ML2636",
+      "cluster_id": "GT-0002",
+      "lat": 13.5,
+      "lon": 77.1,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2020"
+    },
+    {
+      "site_id": "Kadathi Manganese Ore Mine",
+      "cluster_id": "GT-0018",
+      "lat": 15.1,
+      "lon": 76.55,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2020"
+    },
+    {
+      "site_id": "Karekurchi Iron & Manganese Ore Mine ML2248",
+      "cluster_id": "GT-0003",
+      "lat": 13.6,
+      "lon": 77.0,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2021"
+    },
+    {
+      "site_id": "Karekurchi Iron Mn & Red Oxide Mine",
+      "cluster_id": "GT-0003",
+      "lat": 13.6,
+      "lon": 77.0,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2022"
+    },
+    {
+      "site_id": "Doddabyladakere (DB Kere) Iron & Manganese Mine",
+      "cluster_id": "GT-0005",
+      "lat": 14.0,
+      "lon": 76.3,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2022"
+    },
+    {
+      "site_id": "Jiginahalli Manganese Mine ML2482",
+      "cluster_id": "GT-0023",
+      "lat": 15.2,
+      "lon": 76.6,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "BNG_MS_Apr24_2022"
+    },
+    {
+      "site_id": "Ramanguli G4 Reconnaissance Uttara Kannada",
+      "cluster_id": "GT-0011",
+      "lat": 14.8,
+      "lon": 74.6,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "GSI_G4_Ramanguli"
+    },
+    {
+      "site_id": "Chiknayakanhalli G4 Chitradurga Belt",
+      "cluster_id": "GT-0001",
+      "lat": 13.5,
+      "lon": 76.6,
+      "precision_flag": "block_level",
+      "state": "Karnataka",
+      "source": "GSI_G4_Chiknayakanhalli"
+    }
+  ]
+}

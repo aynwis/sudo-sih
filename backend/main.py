@@ -1,137 +1,18 @@
-"""Serves Sahil's pretrained manganese grade/tonnage regressors to the
-dashboard. Live Earth Engine inference (Mn_Detect_Tonnage_Grade.py's
-fetch_all_geospatial_data) needs his own GCP project credentials, which
-aren't available here -- so this predicts on the same training CSV instead,
-using the identical held-out validation split model.py used when training,
-which is enough to get real (not hardcoded-fallback) R^2 numbers and
-realistic grade/tonnage estimates onto the dashboard.
+"""Compatibility entrypoint for the unified MnSight API.
 
-Note: model.py's own train_and_save_model() never saves val_r2_grade/
-val_r2_tonnage into the pkl bundle, so Mn_Detect_Tonnage_Grade.py's
-bundle.get('val_r2_grade', 0.86) always silently returns that hardcoded
-default rather than a real metric. This recomputes it properly instead.
+The live application is implemented in ``app.main``. Keeping this tiny shim
+means the documented ``uvicorn main:app`` command and the explicit
+``uvicorn app.main:app`` command start the exact same routes, cache behavior,
+and response contracts instead of silently selecting a legacy duplicate app.
 """
 
 from pathlib import Path
+import sys
 
-import joblib
-import pandas as pd
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from sklearn.metrics import r2_score
-from sklearn.model_selection import train_test_split
+# ``app.main`` uses package-local absolute imports. Add the backend directory
+# when this shim is imported as ``backend.main`` from the repository root.
+BACKEND_DIR = Path(__file__).resolve().parent
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
 
-ML_DIR = Path(__file__).resolve().parent.parent / "ml" / "manganese"
-MODEL_PATH = ML_DIR / "manganese_xgboost_models.pkl"
-CSV_PATH = ML_DIR / "final_flattened_training_data.csv"
-GROUND_TRUTH_XLSX = ML_DIR / "PS26009_GroundTruth_Supplemented.xlsx"
-
-app = FastAPI(title="MnSight backend")
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["GET"],
-    allow_headers=["*"],
-)
-
-_cached_estimate = None
-
-
-def compute_regression_estimate():
-    if not MODEL_PATH.exists() or not CSV_PATH.exists():
-        return None
-
-    bundle = joblib.load(MODEL_PATH)
-    grade_model = bundle["grade_model"]
-    tonnage_model = bundle["tonnage_model"]
-    feature_names = bundle["feature_names"]
-
-    df = pd.read_csv(CSV_PATH)
-    X = df[feature_names]
-    y_grade = df["grade_target"]
-    y_tonnage = df["tonnage_target"]
-
-    # Same split model.py used at training time (random_state=42,
-    # test_size=0.2) -- these validation rows were held out from training,
-    # so predicting on them gives a real generalization metric.
-    _, X_val, _, g_val, _, t_val = train_test_split(
-        X, y_grade, y_tonnage, test_size=0.2, random_state=42
-    )
-
-    g_preds = grade_model.predict(X_val)
-    t_preds = tonnage_model.predict(X_val)
-
-    grade_r2 = round(float(r2_score(g_val, g_preds)), 4)
-    tonnage_r2 = round(float(r2_score(t_val, t_preds)), 4)
-    mean_grade_pct = round(float(g_preds.mean()), 2)
-    mean_tonnage_mt = round(float(t_preds.mean()), 2)
-
-    return {
-        "status": "final",
-        "gradeR2": grade_r2,
-        "tonnageR2": tonnage_r2,
-        "meanGradePct": mean_grade_pct,
-        "meanTonnageMt": mean_tonnage_mt,
-        "regressionReadySites": int(len(X_val)),
-
-        # Aliases -- match Syed's/Dharti's guide field names so their
-        # code parses this response as written. Same numbers, old keys.
-        # n_training_points is deliberately omitted rather than aliased
-        # to regressionReadySites (209715 pixels reads as a nonsensical
-        # "training points" count on Dharti's card).
-        "predicted_grade_pct": mean_grade_pct,
-        "confidence_interval_pct": None,
-        "method": "XGBoost regression (grade + tonnage), full-tile",
-    }
-
-
-@app.on_event("startup")
-def load_model_on_startup():
-    global _cached_estimate
-    _cached_estimate = compute_regression_estimate()
-
-
-@app.get("/api/regression-estimate")
-def regression_estimate():
-    if _cached_estimate is None:
-        return {"status": "unavailable"}
-    return _cached_estimate
-
-
-@app.get("/api/validation-points")
-def validation_points():
-    if not GROUND_TRUTH_XLSX.exists():
-        return {
-            "count": 0,
-            "sites": [],
-        }
-
-    df = pd.read_excel(
-        GROUND_TRUTH_XLSX,
-        sheet_name="Ground_Truth_Clean",
-    )
-
-    sites = []
-
-    for index, row in df.iterrows():
-        latitude = row.get("latitude")
-        longitude = row.get("longitude")
-
-        if pd.isna(latitude) or pd.isna(longitude):
-            continue
-
-        sites.append(
-            {
-                "site_id": str(row.get("name") or f"site-{index + 1}"),
-                "lat": float(latitude),
-                "lon": float(longitude),
-                "precision_flag": str(
-                    row.get("coord_precision") or "unknown"
-                ),
-            }
-        )
-
-    return {
-        "count": len(sites),
-        "sites": sites,
-    }
+from app.main import app

@@ -23,8 +23,8 @@ def test_regression_estimate_contract():
     assert res.status_code == 200
     data = res.json()
     assert data["status"] == "final"
-    assert data["gradeR2"] == 0.86
-    assert data["tonnageR2"] == 0.97
+    assert data["gradeR2"] == 0.8678
+    assert data["tonnageR2"] == 0.9738
     assert "meanGradePct" in data
     assert "predicted_grade_pct" in data
     assert "confidence_interval_pct" in data

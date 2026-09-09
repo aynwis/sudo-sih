@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { MOCK_GROUND_TRUTH_SITES } from "../lib/mockData";
 
-// Mocks standing in for Syed's validation-points endpoint and the
-// regression estimate endpoint until they're live (Day 4). Shape matches
-// what a React Query hook would return so swapping the implementation
-// later doesn't touch Home.jsx.
+// These hooks prefer the live local/deployed API and keep a bounded fallback
+// so the dashboard remains presentable when the backend is temporarily down.
 export function useValidationPoints() {
   const [state, setState] = useState({ isLoading: true, isError: false, data: null });
 
@@ -16,8 +14,8 @@ export function useValidationPoints() {
         if (!cancelled) setState({ isLoading: false, isError: false, data: real });
       })
       .catch(() => {
-        // Syed's validation-points endpoint isn't live yet -- fall back to
-        // the mock ground-truth sites so the map still renders points.
+        // Keep the map usable during a backend outage; the live path above is
+        // the source of truth whenever the API responds.
         if (!cancelled) {
           setState({ isLoading: false, isError: false, data: { count: MOCK_GROUND_TRUTH_SITES.length, sites: MOCK_GROUND_TRUTH_SITES } });
         }
@@ -40,12 +38,11 @@ export function useValidationPoints() {
 // its live response is used instead; otherwise this snapshot renders,
 // and it's the genuine model output, just computed once instead of live.
 const REAL_REGRESSION_SNAPSHOT = {
-  status: "ready",
+  status: "final",
   gradeR2: 0.8678,
   tonnageR2: 0.9738,
   meanGradePct: 25.41,
   meanTonnageMt: 11.22,
-  regressionReadySites: 209715,
 };
 
 export function useRegressionEstimate() {

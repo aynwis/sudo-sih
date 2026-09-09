@@ -7,8 +7,8 @@ async function fetchReceiptSheet(siteId) {
     const res = await fetch(`/api/receipt-sheet/${encodeURIComponent(siteId)}`);
     if (res.ok) return res.json();
   } catch {
-    // Ayaan's endpoint isn't up yet -- fall through to the mock lookup
-    // below. Remove the fallback once Day 3/4's real endpoint is live.
+    // Keep source verification usable during a backend outage by falling
+    // through to the small demo lookup below.
   }
   const mock = MOCK_RECEIPT_SHEET[siteId];
   if (!mock) throw new Error(`No receipt-sheet entry for ${siteId}`);

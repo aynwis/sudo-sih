@@ -28,8 +28,8 @@ const LAYERS = [
   {
     name: "Prospectivity output",
     short: "Output",
-    desc: "XGBoost probability surface, validated against 55 tile02 ground-truth sites.",
-    stats: [["Validation AUC", "0.87"], ["Method", "single XGBoost"], ["Scope", "tile02_Jamunjhola"]],
+    desc: "The backend raster contract is live with a deterministic demo cache. Replace it with probability.npy after the full-tile inference run.",
+    stats: [["Raster source", "demo cache"], ["Method", "single XGBoost"], ["Scope", "tile02_Jamunjhola"]],
   },
 ];
 

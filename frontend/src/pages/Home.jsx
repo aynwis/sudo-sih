@@ -69,6 +69,7 @@ export default function Home() {
               <ProspectivityHeatmap
                 probabilityImageUrl={probImage.url}
                 bounds={probImage.bounds}
+                rasterSource={probImage.source}
                 groundTruthSites={validationPoints.data?.sites ?? []}
                 height={650}
               />
@@ -90,7 +91,7 @@ export default function Home() {
               <StatCard
                 icon={MapPin}
                 tone="teal"
-                label="Validation set"
+                label="Ground-truth feed"
                 value={
                   validationPoints.isLoading
                     ? "…"
@@ -98,7 +99,7 @@ export default function Home() {
                       ? "—"
                       : validationPoints.data.count
                 }
-                hint="tile02_Jamunjhola"
+                hint="231 source rows · 143 verified clusters"
               />
 
               <StatCard
