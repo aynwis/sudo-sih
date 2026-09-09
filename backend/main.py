@@ -24,6 +24,7 @@ from sklearn.model_selection import train_test_split
 ML_DIR = Path(__file__).resolve().parent.parent / "ml" / "manganese"
 MODEL_PATH = ML_DIR / "manganese_xgboost_models.pkl"
 CSV_PATH = ML_DIR / "final_flattened_training_data.csv"
+GROUND_TRUTH_XLSX = ML_DIR / "PS26009_GroundTruth_Supplemented.xlsx"
 
 app = FastAPI(title="MnSight backend")
 app.add_middleware(
@@ -95,3 +96,42 @@ def regression_estimate():
     if _cached_estimate is None:
         return {"status": "unavailable"}
     return _cached_estimate
+
+
+@app.get("/api/validation-points")
+def validation_points():
+    if not GROUND_TRUTH_XLSX.exists():
+        return {
+            "count": 0,
+            "sites": [],
+        }
+
+    df = pd.read_excel(
+        GROUND_TRUTH_XLSX,
+        sheet_name="Ground_Truth_Clean",
+    )
+
+    sites = []
+
+    for index, row in df.iterrows():
+        latitude = row.get("latitude")
+        longitude = row.get("longitude")
+
+        if pd.isna(latitude) or pd.isna(longitude):
+            continue
+
+        sites.append(
+            {
+                "site_id": str(row.get("name") or f"site-{index + 1}"),
+                "lat": float(latitude),
+                "lon": float(longitude),
+                "precision_flag": str(
+                    row.get("coord_precision") or "unknown"
+                ),
+            }
+        )
+
+    return {
+        "count": len(sites),
+        "sites": sites,
+    }
