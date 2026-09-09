@@ -1,4 +1,3 @@
-import { BrowserRouter, Route, Routes } from "react-router";
 import IntroScene from "./components/IntroScene";
 import SiteNav from "./components/SiteNav";
 import Home from "./pages/Home";
@@ -28,21 +27,8 @@ function Dashboard() {
 }
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route
-          path="*"
-          element={
-            <AppLayout>
-              <NotFound />
-            </AppLayout>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
-  );
+  const page = window.location.pathname === "/" ? <Dashboard /> : <AppLayout><NotFound /></AppLayout>;
+  return page;
 }
 
 export default App;
