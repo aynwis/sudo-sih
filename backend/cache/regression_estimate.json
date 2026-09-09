@@ -1,0 +1,10 @@
+{
+  "status": "final",
+  "gradeR2": 0.8678,
+  "tonnageR2": 0.9738,
+  "meanGradePct": 25.41,
+  "meanTonnageMt": 11.22,
+  "predicted_grade_pct": 25.41,
+  "confidence_interval_pct": null,
+  "method": "XGBoost regression (grade + tonnage), held-out validation"
+}

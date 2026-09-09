@@ -111,3 +111,5 @@ backend/gee-service-account.json
 backend/cache/*
 !backend/cache/probability.png
 !backend/cache/probability.meta.json
+!backend/cache/validation_points.json
+!backend/cache/regression_estimate.json

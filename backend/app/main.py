@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -27,8 +28,24 @@ EXCEL_PATH = DATA_DIR / "PS26009_GroundTruth_Supplemented.xlsx"
 ML_DIR = BASE_DIR.parent / "ml" / "manganese"
 MODEL_PATH = ML_DIR / "manganese_xgboost_models.pkl"
 CSV_PATH = ML_DIR / "final_flattened_training_data.csv"
+CACHE_DIR = BASE_DIR / "cache"
+VALIDATION_CACHE_PATH = CACHE_DIR / "validation_points.json"
+REGRESSION_CACHE_PATH = CACHE_DIR / "regression_estimate.json"
 
 _regression_cache = None
+
+
+def _read_cache(path: Path):
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _write_cache(path: Path, payload: dict) -> None:
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    temporary.replace(path)
 
 
 def _compute_regression_estimate():
@@ -65,28 +82,34 @@ def _compute_regression_estimate():
 @app.get("/api/validation-points")
 @app.get("/api/v1/validation-points")
 def get_validation_points():
-    if not EXCEL_PATH.exists():
-        raise HTTPException(status_code=500, detail="Ground truth data not found")
-
-    df = pd.read_excel(EXCEL_PATH, sheet_name="Ground_Truth_Clean")
-    df = df.fillna("")
-
-    sites = []
-    for _, row in df.iterrows():
-        prec = str(row.get("coord_precision", "")).strip().lower()
-        flag = "block_level" if "block" in prec else "mine_level"
-
-        sites.append({
-            "site_id": str(row.get("name", "")),
-            "cluster_id": str(row.get("cluster_id", "")),
-            "lat": float(row.get("latitude", 0.0)),
-            "lon": float(row.get("longitude", 0.0)),
-            "precision_flag": flag,
-            "state": str(row.get("state_norm", "")),
-            "source": str(row.get("source", "")),
-        })
-
-    return {"count": len(sites), "sites": sites}
+    try:
+        if not EXCEL_PATH.exists():
+            raise FileNotFoundError(EXCEL_PATH)
+        df = pd.read_excel(EXCEL_PATH, sheet_name="Ground_Truth_Clean").fillna("")
+        sites = []
+        for _, row in df.iterrows():
+            prec = str(row.get("coord_precision", "")).strip().lower()
+            flag = "block_level" if "block" in prec else "mine_level"
+            sites.append({
+                "site_id": str(row.get("name", "")),
+                "cluster_id": str(row.get("cluster_id", "")),
+                "lat": float(row.get("latitude", 0.0)),
+                "lon": float(row.get("longitude", 0.0)),
+                "precision_flag": flag,
+                "state": str(row.get("state_norm", "")),
+                "source": str(row.get("source", "")),
+            })
+        payload = {"count": len(sites), "sites": sites}
+        _write_cache(VALIDATION_CACHE_PATH, payload)
+        return payload
+    except Exception as live_error:
+        cached = _read_cache(VALIDATION_CACHE_PATH)
+        if cached is not None:
+            return cached
+        raise HTTPException(
+            status_code=503,
+            detail=f"Validation data unavailable and no cached response exists: {live_error}",
+        ) from live_error
 
 
 # Regression Estimate
@@ -94,9 +117,21 @@ def get_validation_points():
 @app.get("/api/v1/regression-estimate")
 def get_regression_estimate():
     global _regression_cache
-    if _regression_cache is None:
-        _regression_cache = _compute_regression_estimate()
-    return _regression_cache or {"status": "unavailable"}
+    try:
+        if _regression_cache is None:
+            _regression_cache = _compute_regression_estimate()
+        if _regression_cache is None:
+            raise FileNotFoundError("model or training data missing")
+        _write_cache(REGRESSION_CACHE_PATH, _regression_cache)
+        return _regression_cache
+    except Exception as live_error:
+        cached = _read_cache(REGRESSION_CACHE_PATH)
+        if cached is not None:
+            return cached
+        raise HTTPException(
+            status_code=503,
+            detail=f"Regression data unavailable and no cached response exists: {live_error}",
+        ) from live_error
 
 
 # Receipt Sheet Lookup
