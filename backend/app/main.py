@@ -71,6 +71,8 @@ def get_regression_estimate():
 # Receipt Sheet Lookup
 @app.get("/api/receipt-sheet/{site_id}", response_model=ReceiptResponse)
 @app.get("/api/v1/receipt-sheet/{site_id}", response_model=ReceiptResponse)
+@app.get("/api/receipts/{site_id}", response_model=ReceiptResponse)
+@app.get("/api/v1/receipts/{site_id}", response_model=ReceiptResponse)
 def get_receipt_sheet(site_id: str):
     if not site_id.strip():
         raise HTTPException(status_code=400, detail="site_id cannot be empty")
