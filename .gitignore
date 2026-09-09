@@ -95,3 +95,9 @@ build/
 # Cache directories
 .cache/
 cache/
+
+# Large arrays, caches, and weights
+*.npy
+*.npz
+# Exception: allow mock test fixtures into the repo
+!data/mock/*.npy
