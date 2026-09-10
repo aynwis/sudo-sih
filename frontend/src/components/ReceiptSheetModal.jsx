@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X, FileText, Loader2, AlertCircle } from "lucide-react";
+import { X, FileText, Loader2, AlertCircle, ExternalLink } from "lucide-react";
 import { MOCK_RECEIPT_SHEET } from "../lib/mockData";
 
 async function fetchReceiptSheet(siteId) {
@@ -15,18 +15,29 @@ async function fetchReceiptSheet(siteId) {
   return mock;
 }
 
-export default function ReceiptSheetModal({ siteId, onClose }) {
-  const [state, setState] = useState({ status: "loading", data: null, error: null });
+export default function ReceiptSheetModal({ siteId, displayName = siteId, onClose }) {
+  const [state, setState] = useState({ siteId: null, status: "loading", data: null, error: null });
 
   useEffect(() => {
     if (!siteId) return;
-    setState({ status: "loading", data: null, error: null });
+    let cancelled = false;
     fetchReceiptSheet(siteId)
-      .then((data) => setState({ status: "success", data, error: null }))
-      .catch((err) => setState({ status: "error", data: null, error: err.message }));
+      .then((data) => {
+        if (!cancelled) setState({ siteId, status: "success", data, error: null });
+      })
+      .catch((err) => {
+        if (!cancelled) setState({ siteId, status: "error", data: null, error: err.message });
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [siteId]);
 
   if (!siteId) return null; // selectedId doubles as isOpen
+
+  const visibleState = state.siteId === siteId
+    ? state
+    : { status: "loading", data: null, error: null };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-basalt/70 backdrop-blur-sm p-4" onClick={onClose}>
@@ -36,7 +47,7 @@ export default function ReceiptSheetModal({ siteId, onClose }) {
             <div className="chip teal">
               <FileText size={15} strokeWidth={2} />
             </div>
-            <span className="font-display text-lg text-bone not-italic">Verify source — {siteId}</span>
+            <span className="font-display text-lg text-bone not-italic">Verify source — {displayName}</span>
           </div>
           <button
             onClick={onClose}
@@ -46,30 +57,43 @@ export default function ReceiptSheetModal({ siteId, onClose }) {
           </button>
         </div>
 
-        {state.status === "loading" && (
+        {visibleState.status === "loading" && (
           <p className="flex items-center gap-2 text-sm text-bone-dim">
             <Loader2 size={14} className="animate-spin" /> Looking up source…
           </p>
         )}
-        {state.status === "error" && (
+        {visibleState.status === "error" && (
           <p className="flex items-center gap-2 text-sm text-rose-400">
-            <AlertCircle size={14} /> Couldn't load: {state.error}
+            <AlertCircle size={14} /> Couldn't load: {visibleState.error}
           </p>
         )}
-        {state.status === "success" && (
-          <div className="space-y-2 rounded-xl border border-white/10 bg-black/20 p-4 text-sm text-bone">
-            <div className="flex justify-between gap-4">
-              <span className="text-bone-dim">File</span>
-              <span className="text-right">{state.data.source_file}</span>
+        {visibleState.status === "success" && (
+          <div className="space-y-4">
+            <div className="space-y-2 rounded-xl border border-white/10 bg-black/20 p-4 text-sm text-bone">
+              <div className="flex justify-between gap-4">
+                <span className="text-bone-dim">File</span>
+                <span className="text-right">{visibleState.data.source_file}</span>
+              </div>
+              <div className="flex justify-between gap-4">
+                <span className="text-bone-dim">Sheet</span>
+                <span className="text-right">{visibleState.data.sheet}</span>
+              </div>
+              <div className="flex justify-between gap-4">
+                <span className="text-bone-dim">Row</span>
+                <span className="text-right">{visibleState.data.row}</span>
+              </div>
             </div>
-            <div className="flex justify-between gap-4">
-              <span className="text-bone-dim">Sheet</span>
-              <span className="text-right">{state.data.sheet}</span>
-            </div>
-            <div className="flex justify-between gap-4">
-              <span className="text-bone-dim">Row</span>
-              <span className="text-right">{state.data.row}</span>
-            </div>
+            <a
+              href="/api/receipt-sheet/workbook"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-2 rounded-lg border border-teal-bright/40 px-4 py-2 text-sm text-teal-bright transition hover:bg-teal-bright/10"
+            >
+              Open source Excel workbook <ExternalLink size={14} />
+            </a>
+            <p className="text-xs text-bone-dim">
+              The workbook opens/downloads from the local backend. Use the sheet and row above to jump to the exact source record.
+            </p>
           </div>
         )}
       </div>

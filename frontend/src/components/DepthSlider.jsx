@@ -5,7 +5,7 @@ const LAYERS = [
     name: "Surface — Sentinel-2 optical",
     short: "Surface",
     desc: "True-color and false-color composite, DN-scaled to reflectance before anything downstream touches it.",
-    stats: [["Resolution", "10m/px"], ["Bands used", "6"], ["Cloud cover", "<5%"]],
+    stats: [["Resolution", "10m/px"], ["Bands used", "6"], ["Cloud QA", "QA60 / SCL"]],
   },
   {
     name: "SAR — Sentinel-1 roughness",
@@ -23,7 +23,7 @@ const LAYERS = [
     name: "Spectral indices",
     short: "Spectral",
     desc: "Fe-oxide ratio, hydroxyl ratio, NDVI, SAR roughness — the actual feature stack the classifier trains on.",
-    stats: [["Fe-oxide range", "0.8 – 2.1"], ["NDVI range", "-0.1 – 0.6"], ["Feature count", "13"]],
+    stats: [["Indices shown", "4"], ["Model features", "21"], ["Input stack", "optical + SAR + DEM"]],
   },
   {
     name: "Prospectivity output",

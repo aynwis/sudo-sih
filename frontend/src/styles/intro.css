@@ -588,6 +588,31 @@
 .ledger-row:hover .verify {
   color: var(--ochre-bright);
 }
+.ledger-row:focus-visible {
+  outline: 1px solid var(--teal-bright);
+  outline-offset: 6px;
+}
+.ledger-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  color: var(--bone-dim);
+  font-size: 12px;
+}
+.ledger-more {
+  border: 1px solid rgba(91, 158, 147, 0.45);
+  border-radius: 99px;
+  padding: 7px 12px;
+  color: var(--teal-bright);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.ledger-more:hover {
+  border-color: var(--teal-bright);
+  background: rgba(91, 158, 147, 0.1);
+}
 
 /* ---------- closing slide -- the handoff into the live dashboard ---------- */
 .close {

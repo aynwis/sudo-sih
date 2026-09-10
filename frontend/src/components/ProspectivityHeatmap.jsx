@@ -143,8 +143,7 @@ export default function ProspectivityHeatmap({ probabilityImageUrl, bounds, grou
               />
             </Source>
 
-            {/* Sahil's regression-ready sites -- empty until real
-                coordinates + predictions come in, see regressionSites.js */}
+            {/* Sahil's precomputed regression-ready sites; see regressionSites.js. */}
             <Source id="regression-site-points" type="geojson" data={regressionGeojson}>
               <Layer
                 id="regression-site-circles"

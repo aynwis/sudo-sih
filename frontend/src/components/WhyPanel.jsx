@@ -1,10 +1,8 @@
 import { Sparkles } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-// Standing in for Sarthak's real SHAP output until it lands -- same
-// plausible feature-importance ranking that was previously baked into a
-// static PNG (matplotlib), now a real interactive chart instead of a
-// picture of one.
+// Precomputed model-level SHAP summary used by the demo. It is not a
+// per-pixel explanation for the deterministic raster surface.
 const SHAP_DATA = [
   { feature: "Fe-oxide ratio", value: 0.31 },
   { feature: "SAR roughness (VV)", value: 0.24 },
@@ -31,7 +29,7 @@ export default function WhyPanel() {
         <div className="chip ochre">
           <Sparkles size={15} strokeWidth={2} />
         </div>
-        <span className="label">What drove this score</span>
+        <span className="label">What drives the model</span>
       </div>
 
       <div className="h-[260px] w-full">
@@ -63,6 +61,9 @@ export default function WhyPanel() {
           </BarChart>
         </ResponsiveContainer>
       </div>
+      <p className="mt-2 text-xs leading-relaxed text-bone-dim">
+        Precomputed model-level SHAP summary; the demo raster is not a live per-pixel explanation.
+      </p>
     </div>
   );
 }

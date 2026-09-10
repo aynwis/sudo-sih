@@ -104,8 +104,8 @@ export default function IntroScene() {
         <section className="ledger" id="ledger">
           <div className="ledger-head">
             <div className="strata-index">05 — verify, live</div>
-            <h2>Click a number, see the file it came from.</h2>
-            <p>Every stat on this page traces to one of these. This is the actual receipt-sheet pattern the dashboard uses live, below.</p>
+            <h2>Click a record, see the file it came from.</h2>
+            <p>These are live ground-truth records from the backend feed. Click any row to verify its workbook, sheet, and exact Excel row.</p>
           </div>
           <ReceiptLedgerPreview />
         </section>

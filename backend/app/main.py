@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 import pandas as pd
 import joblib
 from sklearn.metrics import r2_score
@@ -33,6 +34,21 @@ VALIDATION_CACHE_PATH = CACHE_DIR / "validation_points.json"
 REGRESSION_CACHE_PATH = CACHE_DIR / "regression_estimate.json"
 
 _regression_cache = None
+
+
+@app.get("/api/receipt-sheet/workbook")
+@app.get("/api/v1/receipt-sheet/workbook")
+def get_receipt_workbook():
+    """Serve the source workbook used by the receipt-sheet lookup."""
+    if not EXCEL_PATH.exists():
+        raise HTTPException(status_code=404, detail="Source workbook is unavailable")
+
+    return FileResponse(
+        path=EXCEL_PATH,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        filename=EXCEL_PATH.name,
+        headers={"Content-Disposition": f'inline; filename="{EXCEL_PATH.name}"'},
+    )
 
 
 def _read_cache(path: Path):

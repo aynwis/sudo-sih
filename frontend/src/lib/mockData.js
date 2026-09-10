@@ -12,9 +12,10 @@ export const MOCK_GROUND_TRUTH_SITES = [
 ];
 
 export const MOCK_RECEIPT_SHEET = {
-  Gumgaon: { source_file: "Ground_Truth_Clean.xlsx", sheet: "Ground_Truth_Clean", row: 12 },
-  "Mansar / Munsar": { source_file: "Ground_Truth_Clean.xlsx", sheet: "Ground_Truth_Clean", row: 47 },
-  Beldongri: { source_file: "Tonnage_Supplement.xlsx", sheet: "Tonnage_Supplement", row: 3 },
+  "gt-0050": { source_file: "PS26009_GroundTruth_Supplemented.xlsx", sheet: "Ground_Truth_Clean", row: 103 },
+  "gt-0051": { source_file: "PS26009_GroundTruth_Supplemented.xlsx", sheet: "Ground_Truth_Clean", row: 123 },
+  "gt-0008": { source_file: "PS26009_GroundTruth_Supplemented.xlsx", sheet: "Ground_Truth_Clean", row: 89 },
+  "gt-0048": { source_file: "PS26009_GroundTruth_Supplemented.xlsx", sheet: "Ground_Truth_Clean", row: 96 },
 };
 
 // A rendered probability surface -- a mock gradient standing in for Ayaan's
